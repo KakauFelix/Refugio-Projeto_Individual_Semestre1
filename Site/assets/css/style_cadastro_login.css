@@ -229,6 +229,7 @@ form input{
     border: solid 3px #FFAB0D;
     border-radius: 20px;
     text-align: center;
+    box-shadow: 2px 2px 5px #ffd471;
 }
 
 .boxLogin h1{
