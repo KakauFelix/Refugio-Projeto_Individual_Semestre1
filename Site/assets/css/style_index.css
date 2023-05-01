@@ -1,5 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: blue #01000E;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #01000E;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: blue;
+    border-radius: 20px;
+    border: 3px solid #01000E;
+}
+
 html {
     scroll-padding-top: 12.5vh;
     scroll-behavior: smooth;
