@@ -218,6 +218,77 @@ form input{
     margin-bottom: 25px;
 }
 
+.divFormsCadastro form .btnCadastrar:hover{
+    background-color: #0f8994;
+}
+
+.boxLogin{
+    width: 25%;
+    height: fit-content;
+    background-color: #751807;
+    border: solid 3px #FFAB0D;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.boxLogin h1{
+    color: #FFAB0D;
+    margin-top: 10px;
+}
+
+.boxLogin hr{
+    border: solid 1px #FFAB0D;
+}
+
+.boxLogin form{
+    padding: 20px;
+}
+
+.boxLogin form input{
+    height: 30px;
+    border: solid 3px #FFAB0D;
+    margin-bottom: 20px;
+}
+
+.boxLogin form #ipt_username{
+    background-image:url(../images/icons/icon_chapeu-de-bruxa.png); 
+    background-repeat: no-repeat; 
+    background-position: 5px;
+    background-size: 25px;
+    padding-left: 35px;
+}
+
+.boxLogin form #ipt_senha{
+    background-image:url(../images/icons/icon_varinha-magica.png); 
+    background-repeat: no-repeat; 
+    background-position: 5px;
+    background-size: 25px;
+    padding-left: 35px;
+}
+
+.boxLogin form .btnEntrar{
+    height: 35px;
+    background-color: #FFAB0D;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    color: #535252;
+    cursor: pointer;
+}
+
+.boxLogin form .btnEntrar:hover{
+    background-color: #faa200;
+}
+
+.boxLogin a{
+    margin-top: 0;
+    color: #5272EB;
+}
+
+.boxLogin a:hover{
+    color: #4362d3;
+}
+
 footer{
     bottom: 0;
     position: absolute;
