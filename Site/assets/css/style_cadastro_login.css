@@ -114,6 +114,110 @@ nav{
     align-items: center;
 }
 
+.boxCadastro{
+    width: 50%;
+    height: fit-content;
+    background-color: #000000;
+    border: 2px solid #1097A2;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px #1097A2;
+    display: flex
+}
+
+.divTxtCadastro{
+    width: 40%;
+    background-color: #1097A2;
+    border-radius: 15px 0px 0px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.divTxtCadastro h2{
+    font-weight: 400;
+    margin: 0;
+}
+
+.divTxtCadastro a{
+    margin-top: 15px;
+    color: #3F3D56;
+}
+
+.divTxtCadastro a:hover{
+    color: #4e4c6c;
+}
+
+.divFormsCadastro{
+    width: 60%;
+    padding: 20px;
+}
+
+h1{
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+    margin: 0;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+form input{
+    height: 25px;
+    padding-left: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.divFormsCadastro form #ipt_email{
+    background-image:url(../images/icons/icon_email.png); 
+    background-repeat: no-repeat; 
+    background-position: 3px;
+    background-size: 25px;
+    padding-left: 32px;
+}
+
+.divFormsCadastro form #ipt_username{
+    background-image:url(../images/icons/icon_user.png); 
+    background-repeat: no-repeat; 
+    background-position: 5px;
+    background-size: 20px;
+    padding-left: 32px;
+}
+
+.divFormsCadastro form #ipt_senha{
+    background-image:url(../images/icons/icon_lock.png); 
+    background-repeat: no-repeat; 
+    background-position: 5px;
+    background-size: 20px;
+    padding-left: 32px;
+}
+
+.divFormsCadastro form #ipt_confirmar_senha{
+    background-image:url(../images/icons/icon_lock.png); 
+    background-repeat: no-repeat; 
+    background-position: 5px;
+    background-size: 20px;
+    padding-left: 32px;
+}
+
+.divFormsCadastro form .btnCadastrar{
+    height: 30px;
+    background-color: #1097A2;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
 footer{
     bottom: 0;
     position: absolute;
