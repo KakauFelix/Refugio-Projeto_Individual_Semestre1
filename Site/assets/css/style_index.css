@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html {
+    scroll-padding-top: 12.5vh;
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    font-family: 'Poppins';
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+section{
+    margin-bottom: 100px;
+}
+
+.conteiner_margin{
+    width: 90%;
+    margin: auto;
+}
+
+header{
+    width: 100%;
+    height: 10vh;
+    background-color: #01000E;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    box-shadow: 2px 0px 5px #ffffff;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logoEmpresa{
+    display: flex;
+    align-items: center;
+}
+
+.logoEmpresa img{
+    height: 6vh;
+    margin-right: 7px;
+}
+
+.logoEmpresa .txtLogo{
+    color: #FFAB0D;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.navbar{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.navbar a:hover{
+    color: #FFAB0D;
+    border-bottom: solid 2px #FFAB0D;
+    transition: 0.2s ease-in-out;
+}
+
+.navbar .btnLogin{
+    border: 2px solid;
+    padding: 2px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 25px;
+}
+
+.navbar .btnLogin:hover{
+    background-color: #1097A2;
+    color: #ffffff;
+    border: 3px #1097A2;
+    transition: 0.2s ease-in-out;
+}
+
+#inicio{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../images/home/background_hp.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+}
+
+#inicio .boxTxtInicial{
+    width: 50%;
+    margin: auto;
+}
+
+h1{
+    font-size: 30px;
+    font-weight: normal;
+    text-align: center;
+}
+
+#contexto .boxInicial{
+    display: flex;
+}
+
+#contexto .boxInicial img{
+    width: 30%;
+    height: 30%;
+    margin-right: 3%;
+}
+
+h2{
+    width: fit-content;
+    font-size: 25px;
+}
+
+hr{
+    height: 3px;
+    background-color: #FFAB0D;
+    border: #FFAB0D;
+    box-shadow: 1px 1px 2px #ffffff;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+p{
+    font-size: 18px;
+    margin-top: 40px;
+}
+
+#contexto p{
+    text-align: center;
+}
+
+.cardsValores{
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: -25px;
+}
+
+.cardsValores .card{
+    width: 25%;
+    height: 500px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #111111;
+    border-radius: 25px;
+    box-shadow: 2px 4px 4px #898989;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 25px;
+}
+
+.cardsValores .card img{
+    width: 70%;
+}
+
+.cardsValores .card h3{
+    margin: 10px;
+}
+
+.cardsValores .card h4{
+    margin: 10px;
+}
+
+.cardsValores .card p{
+    margin-top: 0;
+    font-size: 14px;
+}
+
+#curiosidades .boxCuriosidades div{
+    height: 40vh;
+    padding-top: 1px;
+}
+
+.boxCuriosidades .curiosidade1{
+    background-image: url(../images/home/img_curiosidade_stranger_things.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.boxCuriosidades .curiosidade2{
+    background-image: url(../images/home/img_curiosidade_ptgqa.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.boxCuriosidades .curiosidade3{
+    background-image: url(../images/home/img_curiosidade_enrolados.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.boxCuriosidades .curiosidade4{
+    background-image: url(../images/home/img_curiosidade_eu_nunca.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.boxCuriosidades .curiosidade5{
+    background-image: url(../images/home/img_curiosidade_the_witcher.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.box_img_e_txt_prop{
+    margin-top: 100px;
+    display: flex;
+}
+
+.box_img_e_txt_prop img{
+    width: 50%;
+    margin-right: 3%;
+}
+
+.box_img_e_txt_prop p{
+    margin-top: 10px;
+}
+
+/**/
+.div_btns_acervo_forum{
+    display: flex;
+    margin-top: 100px;
+}
+
+.div_btns_acervo_forum a{
+    width: 52%;
+    height: 15vh;
+    background-color: #111111;
+    box-shadow: 2px 2px 4px #898989;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.div_btns_acervo_forum .btnAcervo{
+    justify-content: end;
+    padding-right: 4%;
+}
+
+.div_btns_acervo_forum .btnForum{
+    margin-top: 3%;
+    margin-left: -2.5%;
+    padding-left: 3%;
+}
+
+/**/
+
+footer{
+    height: 10vh;
+    background-color: #01000E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
