@@ -43,11 +43,11 @@
                         <label>Username:</label>
                         <input id="ipt_username" type="text" maxlength="25" placeholder="Fulaninho" required>
                         <label>Senha:</label>
-                        <input id="ipt_senha" type="password" maxlength="50" required>
+                        <input id="ipt_senha" type="password" minlength="4" maxlength="50" required>
                         <label>Confirmar senha:</label>
-                        <input id="ipt_confirmar_senha" type="password" maxlength="50" required>
-                        <input class="btnCadastrar" type="submit" value="Cadastrar" required>
+                        <input id="ipt_confirmar_senha" type="password" minlength="4" maxlength="50" required>
                     </form>
+                    <button class="btnCadastrar" onclick="cadastrarUsuario(); return false">Cadastrar</button>
                 </div>
             </div>
         </div>
@@ -57,3 +57,6 @@
     </section>
 </body>
 </html>
+<script src="./assets/js/cadastro.js"></script>
+<!-- importando a biblioteca da API sweetalert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
