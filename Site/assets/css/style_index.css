@@ -150,7 +150,7 @@ p{
 }
 
 .cardsValores .card{
-    width: 25%;
+    width: 330px;
     height: 500px;
     padding: 10px;
     padding-left: 20px;
@@ -162,6 +162,7 @@ p{
     flex-direction: column;
     align-items: center;
     text-align: center;
+    justify-content: space-around;
     margin: 25px;
 }
 
