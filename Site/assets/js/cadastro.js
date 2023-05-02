@@ -12,6 +12,14 @@ function cadastrarUsuario(){
             title: 'Campo obrigatório vazio.',
             showConfirmButton: true,
         });
+    }else if(email.indexOf("@") == -1 || email.endsWith("@")){
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Email inválido.',
+            text: 'É necessário que haja um @ e domínio de e-mail após esse @',
+            showConfirmButton: true,
+        });
     }else if(senha != confirmacao_senha){
         Swal.fire({
             position: 'center',
