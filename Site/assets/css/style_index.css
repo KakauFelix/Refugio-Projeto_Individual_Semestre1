@@ -204,6 +204,10 @@ p{
     font-size: 14px;
 }
 
+.cardsValores .card:hover{
+    box-shadow: 4px 6px 8px #898989;
+}
+
 #curiosidades .boxCuriosidades div{
     height: 40vh;
     padding-top: 1px;
