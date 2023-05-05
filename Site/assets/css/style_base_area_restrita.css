@@ -219,7 +219,7 @@ h2{
     margin: 0;
 }
 
-hr{
+h2 hr{
     height: 3px;
     background-color: #FFAB0D;
     border: #FFAB0D;
