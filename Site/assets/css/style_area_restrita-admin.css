@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: blue #01000E;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #01000E;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: blue;
+    border-radius: 20px;
+    border: 3px solid #01000E;
+}
+
+html {
+    scroll-padding-top: 12.5vh;
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    font-family: 'Poppins';
+    color: #ffffff;
+    display: flex;
+}
+
+.area_usuario{
+    width: 18vw;
+    height: 100vh;
+    background-color: #01000E;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+}
+
+.area_conteiner_conteudo{
+    width: 82vw;
+    margin-left: auto;
+    /* border: solid; */
+}
+
+.conteiner_margin{
+    width: 90%;
+    margin: auto;
+}
+
+header{
+    width: 82vw;
+    height: 10vh;
+    background-color: #01000E;
+    display: flex;
+    align-items: center;
+    position: fixed;
+}
+
+nav{
+    width: 32%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+}
+
+.logoEmpresa{
+    display: flex;
+    align-items: center;
+    align-self: center;
+    margin-top: 15px;
+}
+
+.logoEmpresa img{
+    height: 6vh;
+    margin-right: 7px;
+}
+
+.logoEmpresa .txtLogo{
+    color: #FFAB0D;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.navbar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    list-style: none;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.div_btns_menu_lateral a{
+    height: 50px;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+    padding: 7px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.div_btns_menu_lateral a:hover{
+    height: 52px;
+    transition: 0.2s ease-in-out;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.div_btns_menu_lateral .bnt_page_atual{
+    height: 52px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.navbar .btnVoltar{
+    border: 2px solid;
+    padding: 2px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 25px;
+}
+
+.navbar .btnVoltar:hover{
+    background-color: #1097A2;
+    color: #ffffff;
+    border: 3px #1097A2;
+    transition: 0.2s ease-in-out;
+}
+
+.area_usuario .img_usuario{
+    width: 150px;
+    height: 150px;
+    border: 3px solid;
+    border-radius: 100px;
+    align-self: center;
+    margin: 15px;
+}
+
+h3{
+    font-weight: normal;
+    margin: 0;
+    text-align: center;
+}
+
+.conteiner_btns_menu_lateral{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* border: solid; */
+}
+/* 
+.div_btns_menu_lateral{
+    height: 50px;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+    padding: 7px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+p{
+    margin: 0;
+    font-size: 16px;
+}
+
+.div_dado_usuario p{
+    margin-top: -7px;
+}
+
+.div_conteiner_page{
+    width: 92%;
+    margin-top: 10vh;
+    padding-left: 3%;
+    margin-right: auto;
+}
+
+.div_topo_page{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 12vh;
+}
+
+h2{
+    width: fit-content;
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0;
+}
+
+h2 hr{
+    height: 3px;
+    background-color: #FFAB0D;
+    border: #FFAB0D;
+    box-shadow: 1px 1px 2px #ffffff;
+    margin: 0;
+}
+
+.div_conteiner_dashboard{
+    height: 73vh;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.div_indicadores{
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.div_grafico{
+    height: 75%;
+    background-color: #1E1E1E;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px #898989;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_indicadores .div_indicador{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #1E1E1E;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px #898989;
+}
+
+.div_indicadores .div_indicador img{
+    height: 50%;
+}
+
+.div_indicadores .div_indicador .txt_div_indicador p{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+h4{
+    margin: 0;
+    font-weight: normal;
+    color: #3A636B;
+    font-size: 16px;
+}
+
+footer{
+    width: 18vw;
+    bottom: 0;
+    margin-bottom: 20px;
+    position: fixed;
+    text-align: center;
+}
