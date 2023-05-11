@@ -271,3 +271,101 @@ footer{
     position: fixed;
     text-align: center;
 }
+
+.div_conteiner_cadastros{
+    height: 73vh;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.div_cadastro_filme_serie{
+    width: 48%;
+}
+
+.div_outros_cadastros{
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.linha{
+    width: 2px;
+    background-color: #2C2C2C;
+}
+
+.div_conteiner_cadastros h3{
+    text-align: left;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    color: #666666;
+}
+
+input{
+    height: 25px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 5px;
+}
+
+select{
+    height: 30px;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 5px;
+}
+textarea{
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    font-family: 'Poppins';
+}
+
+.forms_cadastro_filme_serie{
+    height: 100%;
+    justify-content: space-between;
+}
+
+.forms_cadastro_filme_serie .div_2campos{
+    display: flex;
+    justify-content: space-between;
+}
+
+.forms_cadastro_filme_serie .div_2campos .campo_div_2campos{
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+}
+
+.forms_cadastro_filme_serie #ipt_img_capa{
+    padding: 0;
+}
+
+.btnCadastrar{
+    margin-top: 20px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    background-color: #3EABFF;
+    color: #ffffff;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btnCadastrar:hover{
+    box-shadow: 1px 1px 2px #ffffff;
+}
+
+.div_outros_cadastros hr{
+    border: solid 1px #2C2C2C;
+}
+
