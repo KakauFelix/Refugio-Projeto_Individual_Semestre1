@@ -288,6 +288,10 @@ p{
     padding-left: 3%;
 }
 
+.div_btns_acervo_forum a:hover{
+    box-shadow: 2px 3px 5px #898989;
+}
+
 /**/
 
 footer{
@@ -296,4 +300,56 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#desenvolvedor .conteiner_sobre_mim{
+    display: flex;
+    justify-content: space-between;
+}
+
+#desenvolvedor .conteiner_sobre_mim .txtSobreMim{
+    padding-top: 35px;
+    width: 62%;
+    /* border: solid; */
+}
+
+#desenvolvedor .conteiner_sobre_mim .imgsSobreMin{
+    width: 35%;
+    /* border: solid; */
+    text-align: center;
+}
+
+#desenvolvedor .conteiner_sobre_mim .imgsSobreMin h3{
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+#desenvolvedor .conteiner_sobre_mim .imgsSobreMin span{
+    font-size: 20px;
+    color: #7d7d7d;
+    margin: 0;
+}
+
+#desenvolvedor .conteiner_sobre_mim p{
+    margin: 0;
+}
+
+#desenvolvedor .conteiner_sobre_mim .imgsSobreMin .redes_sociais img{
+    margin: 5px;
+}
+
+#desenvolvedor .conteiner_sobre_mim .imgsSobreMin .redes_sociais .icon_linkedin:hover{
+    border-radius: 5px;
+    box-shadow: 1px 2px 2px #898989;
+}
+
+#desenvolvedor .conteiner_sobre_mim .imgsSobreMin .redes_sociais .icon_github:hover{
+    border-radius: 25px;
+    box-shadow: 1px 3px 3px #898989;
+}
+
+#desenvolvedor .conteiner_sobre_mim .imgsSobreMin .redes_sociais .icon_instagram:hover{
+    border-radius: 15px;
+    box-shadow: 1px 1px 3px #898989;
 }
