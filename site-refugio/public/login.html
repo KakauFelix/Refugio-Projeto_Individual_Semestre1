@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refúgio | Login</title>
+    <link rel="shortcut icon" href="assets/images/icon_logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/style_cadastro_login.css">
+</head>
+
+<body>
+    <section id="login">
+        <header>
+            <div class="conteiner_margin">
+                <nav>
+                    <div class="logoEmpresa">
+                        <a href="./index.html"><img src="./assets/images/icon_logo.png" width="" alt="Logo do Site"></a>
+                        <a class="txtLogo" href="./index.html">Refúgio</a>
+                    </div>
+                    <ul class="navbar" id="navbar">
+                        <li><a class="btnVoltar" href="./index.html">Voltar</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="conteiner_login">
+            <div class="boxLogin">
+                <h1>Ticket Login</h1>
+                <hr>
+                <form>
+                    <!-- <label>Username:</label> -->
+                    <input id="ipt_username" type="text" maxlength="25" placeholder="Username" required>
+                    <!-- <label>Senha:</label> -->
+                    <input id="ipt_senha" type="password" maxlength="50" placeholder="Senha" required>
+                    <input class="btnEntrar" type="submit" value="Entrar" onclick="entrar(); return false">
+                    <a href="./cadastro.html">Ainda não possui cadastro? <br> Cadastre-se!</a>
+                </form>
+            </div>
+        </div>
+        <footer>
+            Desenvolvido por Kauanny Tenorio - © 2023
+        </footer>
+    </section>
+</body>
+</html>
+<script src="./assets/js/forum.js"></script>
+<script src="./assets/js/login.js"></script>
+<!-- importando a biblioteca da API sweetalert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

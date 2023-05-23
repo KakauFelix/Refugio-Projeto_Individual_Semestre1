@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refúgio | Cadastros</title>
+    <link rel="shortcut icon" href="../../assets/images/icon_logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../assets/css/style_area_restrita-admin.css">
+</head>
+<body>
+    <div class="area_usuario">
+        <div class="logoEmpresa">
+            <a href="../../index.html"><img src="../../assets/images/icon_logo.png" width="" alt="Logo do Site"></a>
+            <a class="txtLogo" href="../../index.html">Refúgio</a>
+        </div>
+        <img class="img_usuario" src="../../assets/images/area-restrita/usuarios/img_usuario_padrao.png" alt="Imagem do Usuário">
+        <h3>Bem-Vindo(a)</h3>
+        <h3>Administrador</h3>
+        <div class="conteiner_btns_menu_lateral">
+            <div class="div_btns_menu_lateral">
+                <a href="./dashboard.html">Dashboard</a>
+            </div>
+            <div class="div_btns_menu_lateral">
+                <a class="bnt_page_atual" href="./cadastros.html">Cadastros</a>
+            </div>
+            <div class="div_btns_menu_lateral">
+                <a href="./filmes_series.html">Filmes e Series</a>
+            </div>
+        </div>
+        <footer>
+            Desenvolvido por Kauanny Tenorio - © 2023
+        </footer>
+    </div>
+    <div class="area_conteiner_conteudo">
+        <header>
+            <div class="conteiner_margin">
+                <nav>
+                    <ul class="navbar" id="navbar">
+                        <li><a class="btnVoltar" href="../../index.html">Sair</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="div_conteiner_page">
+            <div class="div_topo_page">
+                <h2>Cadastro de Filmes/ Séries <hr></h2>
+            </div>
+            <div class="div_conteiner_cadastros">
+                <div class="div_cadastro_filme_serie">
+                    <form class="forms_cadastro_filme_serie">
+                        <h3>Cadastre um novo filme ou série </h3>
+                        <label>Titulo:</label>
+                        <input type="text" id="ipt_titulo_filme" placeholder="Ex: Velozes e Furiosos 5">
+                        <div class="div_2campos">
+                            <div class="campo_div_2campos">
+                                <label>Imagem de Capa:</label>
+                                <input type="file" id="ipt_img_capa">
+                            </div>
+                            <div class="campo_div_2campos">
+                                <label>Ano de Lançamento:</label>
+                                <input type="number" id="ipt_data_lancamento" min="1895" placeholder="Ex: 2011">
+                            </div>
+                        </div>
+                        <div class="div_2campos">
+                            <div class="campo_div_2campos">
+                                <label>Gênero:</label>
+                                <select id="select_genero_filme"></select>
+                            </div>
+                            <div class="campo_div_2campos">
+                                <label>Categoria:</label>
+                                <select id="select_categoria_filme">
+                                    <option value="0" disabled selected>Selecione...</option>
+                                    <option value="1">Filme</option>
+                                    <option value="2">Serie</option>
+                                </select>
+                            </div>
+                        </div>
+                        <label>Roteirista(s):</label>
+                        <select id="select_roteirista_filme">
+                            <option value="0" disabled selected>Selecione...</option>
+                            <option value="1">Martin Scorsese</option>
+                            <option value="2">Ava Duvernay</option>
+                            <option value="3">Steven Spielberg</option>
+                            <option value="4">Guillermo del Toro</option>
+                        </select>
+                        <label>Diretor(es):</label>
+                        <select id="select_diretor_filme">
+                            <option value="0" disabled selected>Selecione...</option>
+                            <option value="1">Martin Scorsese</option>
+                            <option value="2">Ava Duvernay</option>
+                            <option value="3">Steven Spielberg</option>
+                            <option value="4">Guillermo del Toro</option>
+                        </select>
+                        <label>Sinopse:</label>
+                        <textarea id="ipt_sinopse" cols="30" rows="5" maxlength="500" placeholder="Escreva a sinopse aqui..."></textarea>
+                    </form>
+                    <button class="btnCadastrar" onclick="cadastrarFilmeSerie()">Cadastrar filme/serie</button>
+                </div>
+                <div class="linha"></div>
+                <div class="div_outros_cadastros">
+                    <div class="div_form_cadastro">
+                        <form>
+                            <h3>Cadastre um novo roteirista ou diretor:</h3>
+                            <label>Nome:</label>
+                            <input type="text" id="ipt_nome_produtor" placeholder="Ex: Justin Lin">
+                        </form>
+                        <button class="btnCadastrar" onclick="cadastrarProdutor()">Cadastrar produtor</button>
+                    </div>
+                    <div><hr></div>
+                    <div class="div_form_cadastro">
+                        <form>
+                            <h3>Cadastre um novo gênero:</h3>
+                            <label>Nome:</label>
+                            <input type="text" id="ipt_nome_genero" placeholder="Ex: Fantasia">
+                        </form>
+                        <button class="btnCadastrar" onclick="cadastrarGenero()">Cadastrar Gênero</button>
+                    </div>
+                    <div><hr></div>
+                    <div class="div_form_cadastro">
+                        <form>
+                            <h3>Cadastre uma nova categoria:</h3>
+                            <label>Nome:</label>
+                            <input type="text" id="ipt_nome_categoria" placeholder="Ex: Documentários">
+                        </form>
+                        <button class="btnCadastrar" onclick="cadastrarCategoria()">Cadastrar categoria</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../../assets/js/cadastros_area_admin.js"></script>
+<!-- importando a biblioteca da API sweetalert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

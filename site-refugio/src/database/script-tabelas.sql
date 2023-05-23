@@ -9,7 +9,7 @@ CREATE TABLE usuario (
     email VARCHAR(100) NOT NULL,
     username VARCHAR(25) NOT NULL,
     senha VARCHAR(50) NOT NULL,
-    imgUsuario VARCHAR(500)
+    imgUsuario VARCHAR(100)
 );
 
 CREATE TABLE categoria (
@@ -33,7 +33,7 @@ CREATE TABLE filmesSeries (
     fkGenero INT NOT NULL,
     CONSTRAINT fkGeneroFilme FOREIGN KEY (fkGenero)
         REFERENCES genero (idGenero),
-    imgCapa VARCHAR(500) NOT NULL
+    imgCapa VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE produtor (
@@ -89,6 +89,6 @@ CREATE TABLE postagemForum (
     CONSTRAINT fkUsuarioPostagem FOREIGN KEY (fkUsuario)
         REFERENCES usuario (idUsuario),
     dataHora DATETIME NOT NULL,
-    mensagem VARCHAR(1000) NOT NULL,
+    mensagem VARCHAR(500) NOT NULL,
     CONSTRAINT pkPostagemForum PRIMARY KEY (idPostagemForum , fkUsuario)
 );
