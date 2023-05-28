@@ -138,18 +138,3 @@
     padding-left: 10px;
 }
 
-.btnLimparFiltros {
-    height: 30px;
-    border-radius: 5px;
-    font-size: 15px;
-    background-color: #FFAB0D;
-    margin-top: 30px;
-    border: none;
-    cursor: pointer;
-}
-
-.btnLimparFiltros:hover{
-    background-color: #faa200;
-    box-shadow: 1px 1px 2px #ffffff;
-}
-

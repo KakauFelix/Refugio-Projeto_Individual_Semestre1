@@ -22,9 +22,7 @@ function cadastrar(req, res) {
 }
 
 function listar(req, res) {
-    var idUsuario = req.body.idUsuario;
-
-    console.log("to no controller" + idUsuario);
+    var idUsuario = req.params.idUsuario;
 
     filmeSerieModel.listar(idUsuario)
         .then(function (resultado) {
@@ -76,10 +74,51 @@ function listarRanking(req, res) {
         );
 }
 
+function buscarInformacoes(req, res) {
+    var idFilmeSerie = req.params.idFilmeSerie;
+
+    filmeSerieModel.buscarInformacoes(idFilmeSerie)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function buscarFilmeSerie(req, res) {
+    var idUsuario = req.params.idUsuario;
+    var filme_serie_buscado = req.params.filme_serie_buscado;
+
+    filmeSerieModel.buscarFilmeSerie(idUsuario, filme_serie_buscado)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     cadastrar,
     listar,
     buscarIndicador,
     listarRanking,
+    buscarInformacoes, 
+    buscarFilmeSerie, 
     testar
 }

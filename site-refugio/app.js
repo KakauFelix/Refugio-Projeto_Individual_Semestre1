@@ -17,6 +17,7 @@ var generoRouter = require("./src/routes/genero");
 var categoriaRouter = require("./src/routes/categoria");
 var filmeSerieRouter = require("./src/routes/filmeSerie");
 var postagemForumRouter = require("./src/routes/postagemForum");
+var curtidasRouter = require("./src/routes/curtidas");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -33,6 +34,7 @@ app.use("/genero", generoRouter);
 app.use("/categoria", categoriaRouter);
 app.use("/filmeSerie", filmeSerieRouter);
 app.use("/postagemForum", postagemForumRouter);
+app.use("/curtidas", curtidasRouter);
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

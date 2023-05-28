@@ -54,10 +54,6 @@ function entrar() {
                     }, 1000); // apenas para exibir o loading
                 }
 
-                // setTimeout(function () {
-                //     window.location = "./dashboard/cards.html";
-                // }, 1000); // apenas para exibir o loading
-
             });
 
         } else {

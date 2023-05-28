@@ -56,100 +56,11 @@
         <div class="div_conteiner_page">
             <div class="div_topo_page">
                 <h2>Acervo <hr></h2>
-                <input type="text" id="ipt_busca" placeholder="Ex: Brooklyn Nine-Nine...">
+                <input type="text" id="ipt_busca" placeholder="Ex: Brooklyn Nine-Nine..." oninput="buscarFilmeSerie()">
             </div>
             <div class="div_conteiner_acervo">
                 <div class="conteiner_acervo" id="conteiner_acervo">
-                    <div class="card">
-                        <img src="../assets/images/area-restrita/acervo/capa_alice.png" class="img_capa" alt="Capa do Filme">
-                        <div class="legend_card">
-                            <b><p>157 likes</p></b>
-                            <div>
-                                <img src="../assets/images/icons/icon_curtir.png" id="img_btn_curtir" class="icons_cards" alt="icone curtir" onclick="curtirFilme()">
-                                <img src="../assets/images/icons/icon_expandir.png" class="icons_cards" alt="icone expandir tela" onclick="abrirModalFilme()">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="../assets/images/area-restrita/acervo/capa_anne_com_e.jpg" class="img_capa" alt="Capa do Filme">
-                        <div class="legend_card">
-                            <b><p>157 likes</p></b>
-                            <div>
-                                <a href="#"><img src="../assets/images/icons/icon_curtir.png" class="icons_cards" alt="icone curtir"></a>
-                                <a href="#"><img src="../assets/images/icons/icon_expandir.png" class="icons_cards" alt="icone expandir tela"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="../assets/images/area-restrita/acervo/capa_b99.jpg" class="img_capa" alt="Capa do Filme">
-                        <div class="legend_card">
-                            <b><p>157 likes</p></b>
-                            <div>
-                                <a href="#"><img src="../assets/images/icons/icon_curtir.png" class="icons_cards" alt="icone curtir"></a>
-                                <a href="#"><img src="../assets/images/icons/icon_expandir.png" class="icons_cards" alt="icone expandir tela"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="../assets/images/area-restrita/acervo/capa_tvd.jpg" class="img_capa" alt="Capa do Filme">
-                        <div class="legend_card">
-                            <b><p>157 likes</p></b>
-                            <div>
-                                <a href="#"><img src="../assets/images/icons/icon_curtir.png" class="icons_cards" alt="icone curtir"></a>
-                                <a href="#"><img src="../assets/images/icons/icon_expandir.png" class="icons_cards" alt="icone expandir tela"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="../assets/images/area-restrita/acervo/capa_hp.jpg" class="img_capa" alt="Capa do Filme">
-                        <div class="legend_card">
-                            <b><p>157 likes</p></b>
-                            <div>
-                                <a href="#"><img src="../assets/images/icons/icon_curtir.png" class="icons_cards" alt="icone curtir"></a>
-                                <a href="#"><img src="../assets/images/icons/icon_expandir.png" class="icons_cards" alt="icone expandir tela"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="../assets/images/area-restrita/acervo/capa_tomorrow.jpg" class="img_capa" alt="Capa do Filme">
-                        <div class="legend_card">
-                            <b><p>157 likes</p></b>
-                            <div>
-                                <a href="#"><img src="../assets/images/icons/icon_curtir.png" class="icons_cards" alt="icone curtir"></a>
-                                <a href="#"><img src="../assets/images/icons/icon_expandir.png" class="icons_cards" alt="icone expandir tela"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="../assets/images/area-restrita/acervo/capa_the100.jpg" class="img_capa" alt="Capa do Filme">
-                        <div class="legend_card">
-                            <b><p>157 likes</p></b>
-                            <div>
-                                <a href="#"><img src="../assets/images/icons/icon_curtir.png" class="icons_cards" alt="icone curtir"></a>
-                                <a href="#"><img src="../assets/images/icons/icon_expandir.png" class="icons_cards" alt="icone expandir tela"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="../assets/images/area-restrita/acervo/capa_piratas_do_caribe.jpg" class="img_capa" alt="Capa do Filme">
-                        <div class="legend_card">
-                            <b><p>157 likes</p></b>
-                            <div>
-                                <a href="#"><img src="../assets/images/icons/icon_curtir.png" class="icons_cards" alt="icone curtir"></a>
-                                <a href="#"><img src="../assets/images/icons/icon_expandir.png" class="icons_cards" alt="icone expandir tela"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="../assets/images/area-restrita/acervo/capa_jumanji.jpg" class="img_capa" alt="Capa do Filme">
-                        <div class="legend_card">
-                            <b><p>157 likes</p></b>
-                            <div>
-                                <a href="#"><img src="../assets/images/icons/icon_curtir.png" class="icons_cards" alt="icone curtir"></a>
-                                <a href="#"><img src="../assets/images/icons/icon_expandir.png" class="icons_cards" alt="icone expandir tela"></a>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- A div onde aparece as postagens de filmes e series do acervo -->
                 </div>
                 <div class="conteiner_ranking_acervo">
                     <h2>Rankings <hr></h2>
@@ -171,26 +82,7 @@
             </div>
         </div>
     </div>
-    <div class="div_modal_filme" id="div_modal_filme">
-        <div class="box_modal">
-            <img src="../assets/images/icons/close.png" class="modal_close" width="50"  onclick="fecharModalFilme()" alt="icone fechar">
-            <div class="dados_filme">
-                <img class="img_capa" src="../assets/images/area-restrita/acervo/capa_alice.png" alt="capa do filme">
-                <div>
-                    <h2>Alice no País das Maravilhas <hr></h2>
-                    <p><b>Ano de Lançamento:</b> 2010</p>
-                    <p><b>Gênero:</b> Ficção</p>
-                    <p><b>Categoria:</b>  Filme</p>
-                    <p><b>Roteiro:</b> Linda Woolverton</p>
-                    <p><b>Diretor:</b>  Tim Burton</p>
-                </div>
-            </div>
-            <div><hr></div>
-            <div>
-                <p>Alice (Mia Wasikowska) é uma jovem de 17 anos que passa a seguir um coelho branco apressado, que sempre olha no relógio. Ela entra em um buraco que a leva ao País das Maravilhas, um local onde esteve há dez anos apesar de nada se lembrar dele. Lá ela é recepcionada pelo Chapeleiro Maluco (Johnny Depp) e passa a lidar com seres fantásticos e mágicos, além da ira da poderosa Rainha de Copas (Helena Bonham Carter).</p>
-            </div>
-        </div>
-    </div>
+    <div class="div_modal_filme" id="div_modal_filme"></div>
 </body>
 </html>
 <script src="../assets/js/acervo.js"></script>

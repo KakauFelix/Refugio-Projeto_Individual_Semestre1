@@ -4,10 +4,14 @@ objDiv.scrollTop = objDiv.scrollHeight;
 fetch("/postagemForum/listar").then(function (resposta) {
     if (resposta.ok) {
         if (resposta.status == 204) {
-            // var feed = document.getElementById("feed_container");
-            // var mensagem = document.createElement("span");
-            // mensagem.innerHTML = "Nenhum resultado encontrado."
-            // feed.appendChild(mensagem);   
+            div_msgs.innerHTML = `
+                <center>
+                    <span class="msgNadaEncontrado">
+                        Não existem ou ainda não foi encontrado nenhuma postagem no momento, Poste algo... :)
+                    </span><br>
+                    <button class="btnLimparFiltros" onclick="limparFiltros()">Recarregar a Página</button>
+                </center>
+            `;    
             console.log("Nenhum resultado encontrado.");
             throw "Nenhum resultado encontrado!!";
         }

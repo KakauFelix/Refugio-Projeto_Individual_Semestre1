@@ -6,3 +6,6 @@ site/node_modules
 site/package-lock.json
 
 .github
+
+public/assets/images/area-restrita/acervo/.
+

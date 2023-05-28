@@ -7,7 +7,7 @@ router.get("/", function (req, res) {
     filmeSerieController.testar(req, res);
 });
 
-router.post("/listar/:idUsuario", function (req, res) { 
+router.get("/listar/:idUsuario", function (req, res) {
     filmeSerieController.listar(req, res);
 });
 
@@ -23,6 +23,14 @@ router.get("/buscarIndicador", function (req, res) {
 
 router.get("/listarRanking", function (req, res) {
     filmeSerieController.listarRanking(req, res);
+});
+
+router.get("/buscarInformacoes/:idFilmeSerie", function (req, res) {  
+    filmeSerieController.buscarInformacoes(req, res);
+});
+
+router.get("/buscarFilmeSerie/:idUsuario/:filme_serie_buscado", function (req, res) {
+    filmeSerieController.buscarFilmeSerie(req, res);
 });
 
 module.exports = router;
