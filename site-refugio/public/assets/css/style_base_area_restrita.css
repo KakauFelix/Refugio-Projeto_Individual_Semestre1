@@ -33,6 +33,7 @@ body{
     font-family: 'Poppins';
     color: #ffffff;
     display: flex;
+    overflow: hidden;
 }
 
 .area_usuario{

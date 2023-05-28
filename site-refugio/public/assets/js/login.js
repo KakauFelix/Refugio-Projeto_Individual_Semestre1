@@ -42,7 +42,7 @@ function entrar() {
                 sessionStorage.USERNAME_USUARIO = json.username;
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.TIPO_USUARIO = json.tpUsuario;
-                sessionStorage.ID_USUARIO = json.id;
+                sessionStorage.ID_USUARIO = json.idUsuario;
 
                 if (sessionStorage.TIPO_USUARIO == 0) {
                     setTimeout(function () {

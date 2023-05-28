@@ -59,14 +59,14 @@
                 <input type="text" id="ipt_busca" placeholder="Ex: Brooklyn Nine-Nine...">
             </div>
             <div class="div_conteiner_acervo">
-                <div class="conteiner_acervo">
+                <div class="conteiner_acervo" id="conteiner_acervo">
                     <div class="card">
                         <img src="../assets/images/area-restrita/acervo/capa_alice.png" class="img_capa" alt="Capa do Filme">
                         <div class="legend_card">
                             <b><p>157 likes</p></b>
                             <div>
                                 <img src="../assets/images/icons/icon_curtir.png" id="img_btn_curtir" class="icons_cards" alt="icone curtir" onclick="curtirFilme()">
-                                <img src="../assets/images/icons/icon_expandir.png" class="icons_cards" alt="icone expandir tela">
+                                <img src="../assets/images/icons/icon_expandir.png" class="icons_cards" alt="icone expandir tela" onclick="abrirModalFilme()">
                             </div>
                         </div>
                     </div>
@@ -155,46 +155,12 @@
                     <h2>Rankings <hr></h2>
                     <div>
                         <h4>Top 5 - Filmes/ Séries mais curtidas pelos usuários</h4>
-                        <table>
-                            <tr>
-                                <td><img src="../assets/images/icons/icon_star1.png" alt=""></td>
-                                <td>Brooklyn Nine-Nine</td>
-                            </tr>
-                            <tr>
-                                <td><img src="../assets/images/icons/icon_star2.png" alt=""></td>
-                                <td>Anne with an “E”</td>
-                            </tr>
-                            <tr>
-                                <td><img src="../assets/images/icons/icon_star3.png" alt=""></td>
-                                <td>Harry Potter</td>
-                            </tr>
-                            <tr>
-                                <td><img src="../assets/images/icons/icon_star4.png" alt=""></td>
-                                <td>Amanhã</td>
-                            </tr>
-                            <tr>
-                                <td><img src="../assets/images/icons/icon_star5.png" alt=""></td>
-                                <td>The 100</td>
-                            </tr>
-                        </table>    
+                        <table id="ranking_filmes_series"></table>    
                     </div>
                     <div><hr></div>
                     <div>
                         <h4>Top 3 - Gêneros mais curtidos pelos usuários</h4>
-                        <table>
-                            <tr>
-                                <td><img src="../assets/images/icons/icon_star1.png" alt=""></td>
-                                <td>Ficção</td>
-                            </tr>
-                            <tr>
-                                <td><img src="../assets/images/icons/icon_star2.png" alt=""></td>
-                                <td>Aventura</td>
-                            </tr>
-                            <tr>
-                                <td><img src="../assets/images/icons/icon_star3.png" alt=""></td>
-                                <td>Comédia</td>
-                            </tr>
-                        </table>   
+                        <table id="ranking_generos"></table>   
                     </div>
                     <div><hr></div>
                     <div>
@@ -202,6 +168,26 @@
                         <button class="bntPesquisaFavoritos">Responder Pesquisa</button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="div_modal_filme" id="div_modal_filme">
+        <div class="box_modal">
+            <img src="../assets/images/icons/close.png" class="modal_close" width="50"  onclick="fecharModalFilme()" alt="icone fechar">
+            <div class="dados_filme">
+                <img class="img_capa" src="../assets/images/area-restrita/acervo/capa_alice.png" alt="capa do filme">
+                <div>
+                    <h2>Alice no País das Maravilhas <hr></h2>
+                    <p><b>Ano de Lançamento:</b> 2010</p>
+                    <p><b>Gênero:</b> Ficção</p>
+                    <p><b>Categoria:</b>  Filme</p>
+                    <p><b>Roteiro:</b> Linda Woolverton</p>
+                    <p><b>Diretor:</b>  Tim Burton</p>
+                </div>
+            </div>
+            <div><hr></div>
+            <div>
+                <p>Alice (Mia Wasikowska) é uma jovem de 17 anos que passa a seguir um coelho branco apressado, que sempre olha no relógio. Ela entra em um buraco que a leva ao País das Maravilhas, um local onde esteve há dez anos apesar de nada se lembrar dele. Lá ela é recepcionada pelo Chapeleiro Maluco (Johnny Depp) e passa a lidar com seres fantásticos e mágicos, além da ira da poderosa Rainha de Copas (Helena Bonham Carter).</p>
             </div>
         </div>
     </div>

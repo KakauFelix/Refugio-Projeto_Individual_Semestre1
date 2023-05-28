@@ -7,7 +7,7 @@ router.get("/", function (req, res) {
     filmeSerieController.testar(req, res);
 });
 
-router.get("/listar", function (req, res) {
+router.post("/listar/:idUsuario", function (req, res) { 
     filmeSerieController.listar(req, res);
 });
 
@@ -17,12 +17,12 @@ router.post("/have", upload.single('imgCapa'), (req, res) => {
     filmeSerieController.cadastrar(req, res);
 });
 
-// router.post("/cadastrar", function (req, res) {
-//     filmeSerieController.cadastrar(req, res);
-// });
-
 router.get("/buscarIndicador", function (req, res) {
     filmeSerieController.buscarIndicador(req, res);
+});
+
+router.get("/listarRanking", function (req, res) {
+    filmeSerieController.listarRanking(req, res);
 });
 
 module.exports = router;

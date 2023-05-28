@@ -31,8 +31,25 @@ function deletar(idGenero) {
     return database.executar(instrucao);
 }
 
+function listarRanking() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+        SELECT genero.genero, 
+            COUNT(idCurtida) AS qtdCurtidas
+        FROM genero
+        LEFT JOIN filmesSeries ON filmesSeries.fkGenero = genero.idGenero
+        LEFT JOIN curtidas ON curtidas.fkFilmeSerie = filmesSeries.idFilmeSerie
+        GROUP BY genero.genero
+        ORDER BY qtdCurtidas DESC
+        LIMIT 3;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     cadastrar,
     listar,
-    deletar
+    deletar,
+    listarRanking
 };

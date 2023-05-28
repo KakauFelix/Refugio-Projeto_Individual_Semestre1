@@ -92,3 +92,5 @@ CREATE TABLE postagemForum (
     mensagem VARCHAR(1000) NOT NULL,
     CONSTRAINT pkPostagemForum PRIMARY KEY (idPostagemForum , fkUsuario)
 );
+
+INSERT INTO usuario VALUES (null, 0, 'Administrador', 'refugio@gmail.com', 'userAdmin', '1234', null);

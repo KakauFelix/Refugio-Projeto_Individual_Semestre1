@@ -1,4 +1,4 @@
-fetch("/produtor/listar").then(function (resposta) {
+fetch("/filmeSerie/listar").then(function (resposta) {
     if (resposta.ok) {
         if (resposta.status == 204) {
             // var feed = document.getElementById("feed_container");
@@ -12,8 +12,42 @@ fetch("/produtor/listar").then(function (resposta) {
         resposta.json().then(function (resposta) {
             console.log("Dados recebidos: ", JSON.stringify(resposta));
 
+            for (let i = 0; i < resposta.length; i++) {
+                var fimeSerie = resposta[i];
+
+                tbody_filme_serie.innerHTML += `
+                    <tr>
+                        <td id="campo_id">${fimeSerie.idFilmeSerie}</td>
+                        <td>${fimeSerie.titulo}</td>
+                        <td id="campo_icons"><img src="../../assets/images/icons/icon_editar.png" alt="icone de editar" onclick="editarProdutor(${fimeSerie.idFilmeSerie})"></td>
+                        <td id="campo_icons"><img src="../../assets/images/icons/icon_excluir.png" alt="icone de excluir" onclick="excluirProdutor(${fimeSerie.idFilmeSerie})"></td>
+                    </tr>
+                `;
+            }
+
+            // finalizarAguardar();
+        });
+    } else {
+        throw ('Houve um erro na API!');
+    }
+}).catch(function (resposta) {
+    console.error(resposta);
+    // finalizarAguardar();
+});
+
+fetch("/produtor/listar").then(function (resposta) {
+    if (resposta.ok) {
+        if (resposta.status == 204) {
             // var feed = document.getElementById("feed_container");
-            // feed.innerHTML = "";
+            // var mensagem = document.createElement("span");
+            // mensagem.innerHTML = "Nenhum resultado encontrado."
+            // feed.appendChild(mensagem);   
+            console.log("Nenhum resultado encontrado.");
+            throw "Nenhum resultado encontrado!!";
+        }
+
+        resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta));
 
             for (let i = 0; i < resposta.length; i++) {
                 var produtor = resposta[i];
@@ -52,9 +86,6 @@ fetch("/genero/listar").then(function (resposta) {
         resposta.json().then(function (resposta) {
             console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-            // var feed = document.getElementById("feed_container");
-            // feed.innerHTML = "";
-
             for (let i = 0; i < resposta.length; i++) {
                 var genero = resposta[i];
 
@@ -91,9 +122,6 @@ fetch("/categoria/listar").then(function (resposta) {
 
         resposta.json().then(function (resposta) {
             console.log("Dados recebidos: ", JSON.stringify(resposta));
-
-            // var feed = document.getElementById("feed_container");
-            // feed.innerHTML = "";
 
             for (let i = 0; i < resposta.length; i++) {
                 var categoria = resposta[i];

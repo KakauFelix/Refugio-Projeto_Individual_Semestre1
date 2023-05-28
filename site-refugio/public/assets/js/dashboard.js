@@ -44,9 +44,6 @@ fetch("/usuarios/buscarIndicador").then(function (resposta) {
         resposta.json().then(function (resposta) {
             console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-            // var feed = document.getElementById("feed_container");
-            // feed.innerHTML = "";
-
             p_qtd_usuarios.innerHTML = resposta[0].qtd_usuarios;
 
             // finalizarAguardar();
@@ -59,31 +56,54 @@ fetch("/usuarios/buscarIndicador").then(function (resposta) {
     // finalizarAguardar();
 });
 
-// fetch("/filmeSerie/buscarIndicador").then(function (resposta) {
-//     if (resposta.ok) {
-//         if (resposta.status == 204) {
-//             // var feed = document.getElementById("feed_container");
-//             // var mensagem = document.createElement("span");
-//             // mensagem.innerHTML = "Nenhum resultado encontrado."
-//             // feed.appendChild(mensagem);   
-//             console.log("Nenhum resultado encontrado.");
-//             throw "Nenhum resultado encontrado!!";
-//         }
+fetch("/filmeSerie/buscarIndicador").then(function (resposta) {
+    if (resposta.ok) {
+        if (resposta.status == 204) {
+            // var feed = document.getElementById("feed_container");
+            // var mensagem = document.createElement("span");
+            // mensagem.innerHTML = "Nenhum resultado encontrado."
+            // feed.appendChild(mensagem);   
+            console.log("Nenhum resultado encontrado.");
+            throw "Nenhum resultado encontrado!!";
+        }
 
-//         resposta.json().then(function (resposta) {
-//             console.log("Dados recebidos: ", JSON.stringify(resposta));
+        resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-//             // var feed = document.getElementById("feed_container");
-//             // feed.innerHTML = "";
+            p_qtd_filmes.innerHTML = resposta[0].qtd_filmes_series;
 
-//             p_qtd_filmes.innerHTML = resposta[0].qtd_filmes_series;
+            // finalizarAguardar();
+        });
+    } else {
+        throw ('Houve um erro na API!');
+    }
+}).catch(function (resposta) {
+    console.error(resposta);
+    // finalizarAguardar();
+});
 
-//             // finalizarAguardar();
-//         });
-//     } else {
-//         throw ('Houve um erro na API!');
-//     }
-// }).catch(function (resposta) {
-//     console.error(resposta);
-//     // finalizarAguardar();
-// });
+fetch("/postagemForum/buscarIndicador").then(function (resposta) {
+    if (resposta.ok) {
+        if (resposta.status == 204) {
+            // var feed = document.getElementById("feed_container");
+            // var mensagem = document.createElement("span");
+            // mensagem.innerHTML = "Nenhum resultado encontrado."
+            // feed.appendChild(mensagem);   
+            console.log("Nenhum resultado encontrado.");
+            throw "Nenhum resultado encontrado!!";
+        }
+
+        resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+            p_qtd_postagens.innerHTML = resposta[0].qtd_postagens_forum;
+
+            // finalizarAguardar();
+        });
+    } else {
+        throw ('Houve um erro na API!');
+    }
+}).catch(function (resposta) {
+    console.error(resposta);
+    // finalizarAguardar();
+});

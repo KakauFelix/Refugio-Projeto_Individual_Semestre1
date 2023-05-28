@@ -20,4 +20,8 @@ router.delete("/deletar/:idGenero", function (req, res) {
     generoController.deletar(req, res);
 });
 
+router.get("/listarRanking", function (req, res) {
+    generoController.listarRanking(req, res);
+});
+
 module.exports = router;

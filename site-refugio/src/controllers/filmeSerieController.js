@@ -22,7 +22,11 @@ function cadastrar(req, res) {
 }
 
 function listar(req, res) {
-    filmeSerieModel.listar()
+    var idUsuario = req.body.idUsuario;
+
+    console.log("to no controller" + idUsuario);
+
+    filmeSerieModel.listar(idUsuario)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -55,9 +59,27 @@ function buscarIndicador(req, res) {
         );
 }
 
+function listarRanking(req, res) {
+    filmeSerieModel.listarRanking()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     cadastrar,
     listar,
     buscarIndicador,
+    listarRanking,
     testar
 }
