@@ -22,8 +22,13 @@ CREATE TABLE genero (
     genero VARCHAR(50) NOT NULL
 );
 
+CREATE TABLE produtor (
+    idProdutor INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE filmesSeries (
-    idFilmeSerie INT PRIMARY KEY AUTO_INCREMENT,
+    idFilmeSerie INT AUTO_INCREMENT,
     titulo VARCHAR(50) NOT NULL,
     anoLancamento INT(4) NOT NULL,
     sinopse VARCHAR(500) NOT NULL,
@@ -33,27 +38,14 @@ CREATE TABLE filmesSeries (
     fkGenero INT NOT NULL,
     CONSTRAINT fkGeneroFilme FOREIGN KEY (fkGenero)
         REFERENCES genero (idGenero),
-    imgCapa VARCHAR(500) NOT NULL
-);
-
-CREATE TABLE produtor (
-    idProdutor INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100) NOT NULL
-);
-
-CREATE TABLE producao (
-    idProducao INT AUTO_INCREMENT NOT NULL,
-    fkFilmeSerie INT NOT NULL,
-    CONSTRAINT fkSerieFilmeProducao FOREIGN KEY (fkFilmeSerie)
-        REFERENCES filmesSeries (idFilmeSerie),
-    fkRoteirista INT NOT NULL,
-    CONSTRAINT fkRoteiristaProducao FOREIGN KEY (fkRoteirista)
+	fkRoteiristaPrincipal INT NOT NULL,
+    CONSTRAINT fkRoteiristaProducao FOREIGN KEY (fkRoteiristaPrincipal)
         REFERENCES produtor (idProdutor),
-    fkDiretor INT NOT NULL,
-    CONSTRAINT fkDiretorProducao FOREIGN KEY (fkDiretor)
+    fkDiretorPrincipal INT NOT NULL,
+    CONSTRAINT fkDiretorProducao FOREIGN KEY (fkDiretorPrincipal)
         REFERENCES produtor (idProdutor),
-    dtProducao DATE NOT NULL,
-    CONSTRAINT pkProducao PRIMARY KEY (idProducao , fkFilmeSerie , fkRoteirista , fkDiretor)
+    imgCapa VARCHAR(500) NOT NULL,
+	CONSTRAINT pkFilmeSerie PRIMARY KEY (idFilmeSerie , fkRoteiristaPrincipal , fkDiretorPrincipal)
 );
 
 CREATE TABLE curtidas (
