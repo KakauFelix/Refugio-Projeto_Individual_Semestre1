@@ -17,7 +17,7 @@
         </div>
         <img class="img_usuario" src="../assets/images/area-restrita/usuarios/img_usuario_padrao.png" alt="Imagem do Usuário">
         <h3>Bem-Vindo(a)</h3>
-        <h3>Fulaninho</h3>
+        <h3 id="campo_username_usuario">Fulaninho</h3>
         <div class="conteiner_div_dado_usuario">
             <div class="div_dado_usuario">
                 <h4>Nome:</h4>
@@ -61,42 +61,7 @@
             <div class="div_conteiner_fórum">
                 <div class="div_conteudo_fórum">
                     <div id="div_msgs" class="div_msgs">
-                        <div class="cardMsg">
-                            <img class="img_usuario_msg" src="../assets/images/area-restrita/usuarios/img_usuario_padrao.png" alt="imagem do usuário">
-                            <div class="box_msg">
-                                <div class="infos_msg">
-                                    <span>Fulaninho</span>
-                                    <span>29/04/2023 - 20:23:57</span>
-                                </div>
-                                <div class="msg">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, nemo.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cardMsg">
-                            <img class="img_usuario_msg" src="../assets/images/area-restrita/usuarios/img_usuario_padrao.png" alt="imagem do usuário">
-                            <div class="box_msg">
-                                <div class="infos_msg">
-                                    <span>Fulaninho Jr.</span>
-                                    <span>29/04/2023 - 20:45:38</span>
-                                </div>
-                                <div class="msg">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, nemo. Vero ullam quas quo! Quaerat placeat autem eligendi est qui, dolor quas aliquid quo, odit hic vero nesciunt obcaecati assumenda!</p> 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cardMsg">
-                            <img class="img_usuario_msg" src="../assets/images/area-restrita/usuarios/img_usuario_padrao.png" alt="imagem do usuário">
-                            <div class="box_msg">
-                                <div class="infos_msg">
-                                    <span>Fulaninha</span>
-                                    <span>29/04/2023 - 21:15:59</span>
-                                </div>
-                                <div class="msg">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, nemo. Vero ullam quas quo! Quaerat placeat autem eligendi est qui, dolor quas aliquid quo, odit hic vero nesciunt obcaecati assumenda!</p> 
-                                </div>
-                            </div>
-                        </div>
+                        <!-- A div onde aparece as postagens -->
                     </div>
                     <div class="div_filtros">
                         <div class="titulo_div_filtros">
@@ -104,16 +69,17 @@
                             <img src="../assets/images/icons/icon_filter.png" alt="icone do filtro">
                         </div>
                         <label>Data:</label>
-                        <input type="date" id="ipt_busca_data">
+                        <input type="date" id="ipt_busca_data" oninput="buscarPelaData()">
                         <label>Usuário:</label>
-                        <input type="text" id="ipt_busca_usuario" placeholder="Fulaninho">
+                        <input type="text" id="ipt_busca_usuario" placeholder="Fulaninho" oninput="buscarPeloUsuario()">
+                        <button class="btnLimparFiltros" onclick="limparFiltros()">Limpar Filtros</button>
                     </div>
                 </div>
                 <hr>
                 <div class="div_form_fórum">
-                    <form action="">
+                    <form>
                         <textarea id="ipt_msg" cols="30" rows="2" placeholder="Escreva sua postagem aqui..."></textarea>
-                        <button type="reset"><img src="../assets/images/icons/icon_arrow-circle-right-rounded.png" alt="icone botão de enviar"></button>
+                        <button type="reset"><img src="../assets/images/icons/icon_arrow-circle-right-rounded.png" alt="icone botão de enviar" onclick="fazerPostagem()"></button>
                         <button type="reset"><img src="../assets/images/icons/icon_x-circle-duotone.png" alt="icone botão de cancelar"></button>
                     </form>
                 </div>
@@ -125,3 +91,5 @@
 <script src="../assets/js/forum.js"></script>
 <!-- Chamando os dados do usuario dinamicamente -->
 <script src="../assets/js/dadosUsuario.js"></script>
+<!-- importando a biblioteca da API sweetalert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
