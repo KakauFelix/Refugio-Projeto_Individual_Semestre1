@@ -24,4 +24,8 @@ router.get("/buscarIndicador", function (req, res) {
     usuarioController.buscarIndicador(req, res);
 });
 
+router.get("/buscarIndicadoresPerfil/:idUsuario", function (req, res) {
+    usuarioController.buscarIndicadoresPerfil(req, res);
+});
+
 module.exports = router;

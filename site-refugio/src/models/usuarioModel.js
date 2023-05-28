@@ -12,15 +12,8 @@ function listar() {
 function entrar(username, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", username, senha)
     var instrucao = `
-    SELECT 
-        usuario.*,
-        COUNT(idCurtida) AS qtd_curtidas,
-        COUNT(idPostagemForum) AS qtd_postagens
-    FROM usuario
-    LEFT JOIN curtidas ON curtidas.fkUsuario = usuario.idUsuario
-    LEFT JOIN postagemForum ON postagemForum.fkUsuario = usuario.idUsuario
-    WHERE username = '${username}' AND senha = '${senha}'
-    GROUP BY idUsuario , tpUsuario , nome , email , username , senha , imgUsuario;
+        SELECT * FROM usuario
+        WHERE username = '${username}' AND senha = '${senha}'
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -48,9 +41,22 @@ function buscarIndicador() {
     return database.executar(instrucao);
 }
 
+function buscarIndicadoresPerfil(idUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+        SELECT 
+            (SELECT COUNT(*) FROM curtidas WHERE fkUsuario = 2 AND statusCurtida = 1) AS qtdCurtidas,
+            (SELECT COUNT(*) FROM postagemForum WHERE fkUsuario = 2) AS qtdPostagens
+        FROM usuario WHERE idUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    buscarIndicador
+    buscarIndicador,
+    buscarIndicadoresPerfil
 };

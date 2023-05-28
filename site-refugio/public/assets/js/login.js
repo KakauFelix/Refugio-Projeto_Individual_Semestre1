@@ -36,8 +36,6 @@ function entrar() {
                 console.log(json);
                 console.log(JSON.stringify(json));
 
-                sessionStorage.QTD_POSTAGENS_USUARIO = json.qtd_postagens;
-                sessionStorage.QTD_CURTIDAS_USUARIO = json.qtd_curtidas;
                 sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.USERNAME_USUARIO = json.username;
                 sessionStorage.NOME_USUARIO = json.nome;

@@ -8,52 +8,24 @@ select * from postagemForum;
 select * from produtor;
 select * from genero;
 select * from categoria;
-
     
 -- Consultando quantas postagens existem no banco 
 SELECT COUNT(*) AS qtd_postagens_forum FROM postagemForum;
 
 -- Consulta dos filmes e series  para exibir no acervo
-SELECT filmesSeries.*, 
-    IFNULL(curtidas.qtdCurtidas, 0) AS qtdCurtidas,
-    IFNULL(curtidas.usuarioCurtiu, 0) AS usuarioCurtiu
-FROM filmesSeries
+ SELECT fs.idFilmeSerie, 
+    fs.titulo, 
+    fs.imgCapa, 
+    IFNULL(c.quantidadeCurtidas, 0) AS qtdCurtidas,
+    IFNULL(c.statusCurtida, 0) AS statusCurtida
+FROM filmesSeries fs
 LEFT JOIN 
-    (SELECT fkFilmeSerie, COUNT(*) AS qtdCurtidas, 
-		MAX(CASE WHEN fkUsuario = 2 THEN 1 ELSE 0 END) AS usuarioCurtiu
-    FROM curtidas GROUP BY fkFilmeSerie) 
-    curtidas ON filmesSeries.idFilmeSerie = curtidas.fkFilmeSerie;
+    (SELECT fkFilmeSerie, 
+        COUNT(*) AS quantidadeCurtidas,
+        MAX(CASE WHEN fkUsuario = 2 THEN statusCurtida ELSE 0 END) AS statusCurtida
+    FROM curtidas WHERE curtidas.statusCurtida = 1
+    GROUP BY fkFilmeSerie) c ON fs.idFilmeSerie = c.fkFilmeSerie;
     
---
-SELECT filmesSeries.idFilmeSerie, 
-	filmesSeries.titulo, 
-	filmesSeries.imgCapa, 
-    IFNULL(curtidas.qtdCurtidas, 0) AS qtdCurtidas,
-    IFNULL(curtidas.usuarioCurtiu, 0) AS usuarioCurtiu
-FROM filmesSeries
-LEFT JOIN 
-    (SELECT fkFilmeSerie, COUNT(*) AS qtdCurtidas, 
-		MAX(CASE WHEN fkUsuario = 2 THEN 1 ELSE 0 END) AS usuarioCurtiu
-    FROM curtidas GROUP BY fkFilmeSerie) 
-    curtidas ON filmesSeries.idFilmeSerie = curtidas.fkFilmeSerie
-ORDER BY filmesSeries.titulo;
-
---
-SELECT filmesSeries.*, 
-	genero.genero, 
-    categoria.categoria,
-    IFNULL(curtidas.qtdCurtidas, 0) AS qtdCurtidas,
-    IFNULL(curtidas.usuarioCurtiu, 0) AS usuarioCurtiu
-FROM filmesSeries
-LEFT JOIN 
-    (SELECT fkFilmeSerie, COUNT(*) AS qtdCurtidas, 
-		MAX(CASE WHEN fkUsuario = 2 THEN 1 ELSE 0 END) AS usuarioCurtiu
-    FROM curtidas GROUP BY fkFilmeSerie) 
-    curtidas ON filmesSeries.idFilmeSerie = curtidas.fkFilmeSerie
-LEFT JOIN genero ON filmesSeries.fkGenero = genero.idGenero
-LEFT JOIN categoria ON filmesSeries.fkCategoria - categoria.idCategoria
-ORDER BY filmesSeries.titulo;
-
 -- Consulta do ranking de filmes e series
 SELECT filmesSeries.titulo, 
 	COUNT(idCurtida) AS qtdCurtidas
@@ -81,8 +53,6 @@ SELECT postagemForum.idPostagemForum,
 FROM postagemForum
 JOIN usuario ON postagemForum.fkUsuario = usuario.idUsuario
 ORDER BY dataHora;
-
--- insert into postagemForum values (null, 3, '2023-05-26 10:00:00', 'Que Loucura...'); 
 
 -- Consulta das postagens e o username dos seus respectivos usuarios de uma data especifica
 SELECT postagemForum.idPostagemForum, 
@@ -125,8 +95,7 @@ WHERE filmesSeries.idFilmeSerie = 1;
 SELECT * FROM curtidas
 WHERE fkFilmeSerie = 2 AND fkUsuario = 2;
 
-truncate table curtidas;
-
+-- 
 SELECT usuario.*,
 	COUNT(idCurtida) AS qtd_curtidas,
 	COUNT(idPostagemForum) AS qtd_postagens
@@ -136,20 +105,16 @@ LEFT JOIN postagemForum ON postagemForum.fkUsuario = usuario.idUsuario
 WHERE username = 'usercomum' AND senha = '1234'
 GROUP BY idUsuario , tpUsuario , nome , email , username , senha , imgUsuario;
 
+-- Buscar a qtde de curtidas e de postagens de um determinado usuario
+SELECT 
+    (SELECT COUNT(*) FROM curtidas WHERE fkUsuario = 2 AND statusCurtida = 1) AS qtdCurtidas,
+    (SELECT COUNT(*) FROM postagemForum WHERE fkUsuario = 2) AS qtdPostagens
+FROM usuario WHERE idUsuario = 2;
+
+
+-- Atualizações
 UPDATE curtidas SET statusCurtida = 0
         WHERE fkFilmeSerie = 1 AND fkUsuario = 2;   
 
- --
- SELECT 
-    fs.idFilmeSerie, 
-    fs.titulo, 
-    fs.imgCapa, 
-    IFNULL(c.quantidadeCurtidas, 0) AS qtdCurtidas,
-    IFNULL(c.statusCurtida, 0) AS statusCurtida
-FROM filmesSeries fs
-LEFT JOIN 
-    (SELECT fkFilmeSerie, 
-        COUNT(*) AS quantidadeCurtidas,
-        MAX(CASE WHEN fkUsuario = 2 THEN statusCurtida ELSE 0 END) AS statusCurtida
-    FROM curtidas WHERE curtidas.statusCurtida = 1
-    GROUP BY fkFilmeSerie) c ON fs.idFilmeSerie = c.fkFilmeSerie;
+-- 
+truncate table curtidas;
