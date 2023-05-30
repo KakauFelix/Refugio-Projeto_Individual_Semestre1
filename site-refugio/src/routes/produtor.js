@@ -20,4 +20,8 @@ router.delete("/deletar/:idProdutor", function (req, res) {
     produtorController.deletar(req, res);
 });
 
+router.put("/atualizar/:idProdutor", function (req, res) {
+    produtorController.atualizar(req, res);
+});
+
 module.exports = router;

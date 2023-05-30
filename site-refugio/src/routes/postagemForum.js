@@ -17,7 +17,7 @@ router.post("/realizarPostagem", function (req, res) {
 })
 
 router.get("/buscarIndicador", function (req, res) {
-    usuarioController.buscarIndicador(req, res);
+    postagemForumController.buscarIndicador(req, res);
 });
 
 router.get("/buscarPorData/:data_buscada", function (req, res) {

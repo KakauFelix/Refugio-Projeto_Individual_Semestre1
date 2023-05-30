@@ -68,8 +68,44 @@ function deletar(req, res) {
         );
 }
 
+function atualizar(req, res) {
+    var idGenero = req.params.idGenero;
+    var genero = req.body.genero;
+
+    generoModel.atualizar(idGenero,genero)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar atualização: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function listarRanking(req, res) {
     generoModel.listarRanking()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function obterDadosGrafico(req, res) {
+    generoModel.obterDadosGrafico()
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -89,6 +125,8 @@ module.exports = {
     cadastrar,
     listar,
     deletar,
+    atualizar,
     listarRanking,
+    obterDadosGrafico,
     testar
 }

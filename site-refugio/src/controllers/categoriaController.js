@@ -68,9 +68,29 @@ function deletar(req, res) {
         );
 }
 
+function atualizar(req, res) {
+    var idCategoria = req.params.idCategoria;
+    var categoria = req.body.categoria;
+
+    categoriaModel.atualizar(idCategoria,categoria)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar atualização: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     cadastrar,
     listar,
     deletar,
+    atualizar,
     testar
 }

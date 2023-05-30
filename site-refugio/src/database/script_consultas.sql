@@ -8,6 +8,14 @@ select * from postagemForum;
 select * from produtor;
 select * from genero;
 select * from categoria;
+
+-- Buscando a quantidade de curtidas por genero 
+SELECT genero.genero,
+	COUNT(idCurtida) as qtdCurtidas
+FROM genero
+LEFT JOIN filmesSeries ON filmesSeries.fkGenero = genero.idGenero
+LEFT JOIN curtidas ON curtidas.fkFilmeSerie = filmesSeries.idFilmeSerie
+GROUP BY genero.genero;
     
 -- Consultando quantas postagens existem no banco 
 SELECT COUNT(*) AS qtd_postagens_forum FROM postagemForum;
@@ -95,21 +103,16 @@ WHERE filmesSeries.idFilmeSerie = 1;
 SELECT * FROM curtidas
 WHERE fkFilmeSerie = 2 AND fkUsuario = 2;
 
--- 
-SELECT usuario.*,
-	COUNT(idCurtida) AS qtd_curtidas,
-	COUNT(idPostagemForum) AS qtd_postagens
-FROM usuario
-LEFT JOIN curtidas ON curtidas.fkUsuario = usuario.idUsuario
-LEFT JOIN postagemForum ON postagemForum.fkUsuario = usuario.idUsuario
-WHERE username = 'usercomum' AND senha = '1234'
-GROUP BY idUsuario , tpUsuario , nome , email , username , senha , imgUsuario;
-
 -- Buscar a qtde de curtidas e de postagens de um determinado usuario
 SELECT 
     (SELECT COUNT(*) FROM curtidas WHERE fkUsuario = 2 AND statusCurtida = 1) AS qtdCurtidas,
     (SELECT COUNT(*) FROM postagemForum WHERE fkUsuario = 2) AS qtdPostagens
 FROM usuario WHERE idUsuario = 2;
+
+-- Burcar filmes curtidos por um determinado usuario
+SELECT filmesSeries.* FROM filmesSeries
+JOIN curtidas ON curtidas.fkFilmeSerie = filmesSeries.idFilmeSerie
+WHERE curtidas.fkUsuario = 2 AND curtidas.statusCurtida = 1;
 
 
 -- Atualizações

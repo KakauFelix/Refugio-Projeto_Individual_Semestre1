@@ -113,6 +113,41 @@ function buscarFilmeSerie(req, res) {
         );
 }
 
+function deletar(req, res) {
+    var idFilmeSerie = req.params.idFilmeSerie;
+
+    filmeSerieModel.deletar(idFilmeSerie)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function atualizar(req, res) {
+    var idFilmeSerie = req.params.idFilmeSerie;
+    const imgCapa = req.file.filename;
+
+    const {titulo, anoLancamento, genero, categoria, roteirista, diretor, sinopse} = req.body
+
+    const filmeSerie = {idFilmeSerie, titulo, anoLancamento, genero, categoria, roteirista, diretor, sinopse, imgCapa }
+    
+    filmeSerieModel.atualizar(filmeSerie)
+    .then(resultado => {
+        res.status(201).send("filme/serie criado com sucesso");
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+
+}
+
 module.exports = {
     cadastrar,
     listar,
@@ -120,5 +155,7 @@ module.exports = {
     listarRanking,
     buscarInformacoes, 
     buscarFilmeSerie, 
+    deletar,
+    atualizar,
     testar
 }

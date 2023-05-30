@@ -3,7 +3,7 @@ fetch("/genero/listar").then(function (resposta) {
         if (resposta.status == 204) {
             // var feed = document.getElementById("feed_container");
             // var mensagem = document.createElement("span");
-            // mensagem.innerHTML = "Nenhum resultado encontrado."
+            // mensagem.inn\erHTML = "Nenhum resultado encontrado."
             // feed.appendChild(mensagem);   
             console.log("Nenhum resultado encontrado.");
             throw "Nenhum resultado encontrado!!";

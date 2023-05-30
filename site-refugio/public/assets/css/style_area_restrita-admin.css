@@ -520,3 +520,133 @@ td img:hover{
 .swal-modal {
     text-align: center;
 }
+
+.div_modal_editar{
+    width: 100%;
+    height: 100vh;
+    display: none;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background: #000000AA;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.box_modal{
+    position: fixed;
+    width: 40%;
+    height: fit-content;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3vh;
+    z-index: 6;
+    margin: auto;
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px #898989;
+    padding: 20px 30px 30px 30px;
+    color: #000000;
+}
+
+.modal_close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.div_update_filme_serie{
+    width: 100%;
+}
+
+.forms_update_filme_serie{
+    height: 90%;
+    justify-content: space-between;
+}
+
+.forms_update_filme_serie .div_2campos{
+    display: flex;
+    justify-content: space-between;
+}
+
+.forms_update_filme_serie .div_2campos .campo_div_2campos{
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+}
+
+.forms_update_filme_serie #ipt_img_capa{
+    padding: 0;
+}
+
+
+.box_modal h2{
+    width: 100%;
+    text-align: center;
+}
+
+.btnAtualizar{
+    width: 100%;
+    margin-top: 20px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    background-color: #3EABFF;
+    color: #ffffff;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btnAtualizar:hover{
+    background-color: #39a4f5;
+    box-shadow: 1px 1px 2px #b0b0b0;
+    /* transform: translateY(-2px); */
+}
+
+.div_updates{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dados_filme{
+    display: flex;
+}
+
+.dados_filme div{
+    width: 100%;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.img_capa{
+    width: 20vw;
+    height: 250px;
+    border-radius: 15px;
+}
+
+.div_modal_filme{
+    width: 100%;
+    height: 100vh;
+    display: none;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background: #000000AA;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.div_modal_filme .box_modal{
+    width: 45%;
+    padding-top: 50px;
+}

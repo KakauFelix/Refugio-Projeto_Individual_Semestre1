@@ -24,4 +24,13 @@ router.get("/listarRanking", function (req, res) {
     generoController.listarRanking(req, res);
 });
 
+router.get("/obterDadosGrafico", function (req, res) {
+    generoController.obterDadosGrafico(req, res);
+});
+
+router.put("/atualizar/:idGenero", function (req, res) {
+    generoController.atualizar(req, res);
+});
+
+
 module.exports = router;

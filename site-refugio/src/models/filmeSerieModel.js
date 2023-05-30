@@ -69,7 +69,9 @@ function buscarInformacoes(idFilmeSerie) {
             filmesSeries.anoLancamento, 
             filmesSeries.sinopse, 
             filmesSeries.imgCapa, 
+            genero.idGenero, 
             genero.genero, 
+            categoria.idCategoria,
             categoria.categoria,
             roteirista.nome as roteirista,
             diretor.nome as diretor
@@ -107,11 +109,44 @@ function buscarFilmeSerie(idUsuario, filme_serie_buscado) {
     return database.executar(instrucao);
 }
 
+function deletar(idFilmeSerie) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idFilmeSerie);
+    
+    var instrucao = `
+        DELETE FROM curtidas WHERE fkFilmeSerie = ${idFilmeSerie};
+    `;
+
+    var instrucao2 = `
+        DELETE FROM filmesSeries WHERE idFilmeSerie = ${idFilmeSerie};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao), database.executar(instrucao2);
+}
+
+function atualizar(filmeSerie) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", filmeSerie);
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    // var instrucao = `
+    //     INSERT INTO filmesSeries (titulo, anoLancamento, sinopse, fkCategoria, fkGenero, fkRoteiristaPrincipal, fkDiretorPrincipal, imgCapa) VALUES ('${filmeSerie.titulo}', ${filmeSerie.anoLancamento}, '${filmeSerie.sinopse}', ${filmeSerie.categoria}, ${filmeSerie.genero}, ${filmeSerie.roteirista}, ${filmeSerie.diretor}, '${filmeSerie.imgCapa}');
+    // `;
+
+    var instrucao = `
+        UPDATE filmesSeries SET titulo = '${filmeSerie.titulo}', anoLancamento = ${filmeSerie.anoLancamento}, sinopse = '${filmeSerie.sinopse}', fkCategoria = ${filmeSerie.categoria}, fkGenero = ${filmeSerie.genero}, fkRoteiristaPrincipal = ${filmeSerie.roteirista}, fkDiretorPrincipal = ${filmeSerie.diretor}, imgCapa = '${filmeSerie.imgCapa}' WHERE idFilmeSerie = ${filmeSerie.idFilmeSerie}
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     cadastrar,
     listar,
     buscarIndicador,
     listarRanking,
     buscarInformacoes,
-    buscarFilmeSerie
+    buscarFilmeSerie,
+    deletar,
+    atualizar
 };

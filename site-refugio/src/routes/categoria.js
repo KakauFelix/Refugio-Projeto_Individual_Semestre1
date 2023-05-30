@@ -20,4 +20,8 @@ router.delete("/deletar/:idCategoria", function (req, res) {
     categoriaController.deletar(req, res);
 });
 
+router.put("/atualizar/:idCategoria", function (req, res) {
+    categoriaController.atualizar(req, res);
+});
+
 module.exports = router;

@@ -33,4 +33,13 @@ router.get("/buscarFilmeSerie/:idUsuario/:filme_serie_buscado", function (req, r
     filmeSerieController.buscarFilmeSerie(req, res);
 });
 
+router.delete("/deletar/:idFilmeSerie", function (req, res) {
+    console.log("entrei na rota deletar filme");
+    filmeSerieController.deletar(req, res);
+});
+
+router.put("/atualizar/:idFilmeSerie", upload.single('imgCapa'), (req, res) => {
+    filmeSerieController.atualizar(req, res);
+});
+
 module.exports = router;

@@ -31,6 +31,15 @@ function deletar(idGenero) {
     return database.executar(instrucao);
 }
 
+function atualizar(idGenero, genero) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizar(): ", genero, idGenero);
+    var instrucao = `
+        UPDATE genero SET genero = '${genero}' WHERE idGenero = ${idGenero};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function listarRanking() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
@@ -47,9 +56,25 @@ function listarRanking() {
     return database.executar(instrucao);
 }
 
+function obterDadosGrafico() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+        SELECT genero.genero,
+            COUNT(idCurtida) as qtdCurtidas
+        FROM genero
+        LEFT JOIN filmesSeries ON filmesSeries.fkGenero = genero.idGenero
+        LEFT JOIN curtidas ON curtidas.fkFilmeSerie = filmesSeries.idFilmeSerie
+        GROUP BY genero.genero;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     cadastrar,
     listar,
     deletar,
-    listarRanking
+    atualizar,
+    listarRanking,
+    obterDadosGrafico
 };

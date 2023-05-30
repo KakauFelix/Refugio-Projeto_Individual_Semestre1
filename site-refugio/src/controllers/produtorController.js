@@ -68,9 +68,29 @@ function deletar(req, res) {
         );
 }
 
+function atualizar(req, res) {
+    var idProdutor = req.params.idProdutor;
+    var nomeProdutor = req.body.nomeProdutor;
+
+    produtorModel.atualizar(idProdutor,nomeProdutor)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar atualização: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     cadastrar,
     listar,
     deletar,
+    atualizar,
     testar
 }
