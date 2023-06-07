@@ -1,17 +1,15 @@
 var idUsuario = sessionStorage.getItem(`ID_USUARIO`);
-var pagina = "acervo";
 
-console.log(pagina);
-
-fetch(`/filmeSerie/listar/${idUsuario}`).then(function (resposta) {
+fetch(`/filmeSerie/listarFilmesCurtidosUsuario/${idUsuario}`).then(function (resposta) {
     if (resposta.ok) {
         if (resposta.status == 204) {
-            conteiner_acervo.innerHTML = `
+            conteiner_acervo_historico.innerHTML = `
                 <center>
                     <span class="msgNadaEncontrado">
-                        Não existe ou não foi encontrado postagens de filmes... :)
+                        Não há filmes curtidos no seu histórico... :)
                     </span><br>
-                    <button class="btnLimparFiltros" onclick="limparFiltros()">Recarregar Página</button>
+                    <button class="btnLimparFiltros" onclick="irParaAcervo()">Voltar para o acervo</button>
+
                 </center>
             `;   
             console.log("Nenhum resultado encontrado.");
@@ -33,7 +31,7 @@ fetch(`/filmeSerie/listar/${idUsuario}`).then(function (resposta) {
                     var funcaoBtnCurtir = `curtirFilme(${filmeSerie.idFilmeSerie}, ${idUsuario}, ${i})`;
                 }
 
-                conteiner_acervo.innerHTML += `
+                conteiner_acervo_historico.innerHTML += `
                     <div class="card">
                         <img src="../assets/images/area-restrita/acervo/${filmeSerie.imgCapa}" class="img_capa" alt="Capa do Filme">
                         <div class="legend_card">
@@ -127,91 +125,6 @@ fetch("/genero/listarRanking").then(function (resposta) {
     // finalizarAguardar();
 });
 
-
-function curtirFilme(idFilmeSerie, idUsuario, numeroIdBtn){
-    var imgBtnCurtir = document.querySelector(`#img_btn_curtir${numeroIdBtn}`);
-
-    console.log(`fc - filme: ${idFilmeSerie}, usuário: ${idUsuario}`);
-
-    fetch(`/curtidas/verificarCurtida/${idFilmeSerie}/${idUsuario}`).then(function (resposta) {
-        if (resposta.ok) {
-            if (resposta.status == 204) {             
-                console.log("Nenhum resultado encontrado.");
-                
-                fetch("/curtidas/cadastrarCurtida", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        idFilmeSerieServer: idFilmeSerie,
-                        idUsuarioServer: idUsuario
-                    })
-                }).then(function (resposta) {
-                    
-                    console.log("resposta: ", resposta);
-                    
-                    if (resposta.ok) {
-                        imgBtnCurtir.setAttribute('src', '../assets/images/icons/icon_curtido.png');
-                        
-                        setTimeout(() => {
-                            window.location = "acervo.html";
-                        }, "0050")
-
-                    } else {
-                        throw ("Houve um erro ao tentar realizar o cadastro!");
-                    }
-                }).catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                    // finalizarAguardar();
-                });
-                
-                return false;
-                throw "Nenhum resultado encontrado!!";
-                
-            }
-            
-            resposta.json().then(function (resposta) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-                // var curtida = resposta[0];
-                // alert("Você já curtiu só atualizar");
-
-                fetch(`/curtidas/ativarCurtida/${idFilmeSerie}/${idUsuario}`, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({})
-                }).then(function (resposta) {
-            
-                    if (resposta.ok) {
-                        imgBtnCurtir.setAttribute('src', '../assets/images/icons/icon_curtido.png'); 
-            
-                        setTimeout(() => {
-                            window.location = "acervo.html";
-                        }, "0050")
-            
-                    } else if (resposta.status == 404) {
-                        window.alert("Deu 404!");
-                    } else {
-                        throw ("Houve um erro ao tentar realizar atualizar a curtida! Código da resposta: " + resposta.status);
-                    }
-                }).catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                });
-
-
-            });
-        } else {
-            throw ('Houve um erro na API!');
-        }
-    }).catch(function (resposta) {
-        console.error(resposta);
-        // finalizarAguardar();
-    });
-
-}
-
 function descurtirFilme(idFilmeSerie, idUsuario, numeroIdBtn){
     var imgBtnCurtir = document.querySelector(`#img_btn_curtir${numeroIdBtn}`);
     console.log(`fd - filme: ${idFilmeSerie}, usuário: ${idUsuario}`);
@@ -228,7 +141,7 @@ function descurtirFilme(idFilmeSerie, idUsuario, numeroIdBtn){
             imgBtnCurtir.setAttribute('src', '../assets/images/icons/icon_curtir.png'); 
 
             setTimeout(() => {
-                window.location = "acervo.html";
+                window.location = "historico_curtidas.html";
             }, "1000")
 
         } else if (resposta.status == 404) {
@@ -304,18 +217,18 @@ function buscarFilmeSerie() {
     var filme_serie_buscado = ipt_busca.value;
 
     if (filme_serie_buscado == "") {
-        window.location = "acervo.html";
+        window.location = "historico_curtidas.html";
     }
 
-    fetch(`/filmeSerie/buscarFilmeSerie/${idUsuario}/${filme_serie_buscado}`).then(function (resposta) {
+    fetch(`/filmeSerie/buscarFilmeSerieCurtido/${idUsuario}/${filme_serie_buscado}`).then(function (resposta) {
         if (resposta.ok) {
             if (resposta.status == 204) {
-                conteiner_acervo.innerHTML = `
+                conteiner_acervo_historico.innerHTML = `
                     <center>
                         <span class="msgNadaEncontrado">
-                            Não foi encontrado nenhum filme com esse nome, busque por outro... :)
+                            Não há filmes curtidos no seu histórico com esse nome...   :)                        
                         </span><br>
-                        <button class="btnLimparFiltros" onclick="limparFiltros()">Limpar filtro</button>
+                        <button class="btnLimparFiltros" onclick="irParaAcervo()">Voltar para o acervo</button>
                     </center>
                 `;   
                 console.log("Nenhum resultado encontrado.");
@@ -325,7 +238,7 @@ function buscarFilmeSerie() {
             resposta.json().then(function (resposta) {
                 console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                conteiner_acervo.innerHTML = "";
+                conteiner_acervo_historico.innerHTML = "";
     
                 for (let i = 0; i < resposta.length; i++) {
                     var filmeSerie = resposta[i];
@@ -339,7 +252,7 @@ function buscarFilmeSerie() {
                         var funcaoBtnCurtir = `curtirFilme(${filmeSerie.idFilmeSerie}, ${idUsuario}, ${i})`;
                     }
     
-                    conteiner_acervo.innerHTML += `
+                    conteiner_acervo_historico.innerHTML += `
                         <div class="card">
                             <img src="../assets/images/area-restrita/acervo/${filmeSerie.imgCapa}" class="img_capa" alt="Capa do Filme">
                             <div class="legend_card">
@@ -364,10 +277,6 @@ function buscarFilmeSerie() {
     });
 }
 
-function limparFiltros() {
+function irParaAcervo() {
     window.location = "acervo.html";
-}
-
-function verHistoricoCurtidos() {
-    window.location = "historico_curtidas.html";
 }

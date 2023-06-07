@@ -133,11 +133,49 @@ function buscarIndicadoresPerfil(req, res) {
         );
 }
 
+function atualizar(req, res) {
+    var idUsuario = req.params.idUsuario;
+    const imgUsuario = req.file.filename;
+
+    const {nome, email, username, senha} = req.body
+
+    const usuario = {idUsuario, nome, email, username, senha, imgUsuario}
+    
+    usuarioModel.atualizar(usuario)
+    .then(resultado => {
+        res.status(201).send("usuario atualizado com sucesso");
+    }).catch(err => {
+        res.status(500).send(err);
+    });
+
+}
+
+function buscarDadosAtulizados(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    usuarioModel.buscarDadosAtulizados(idUsuario)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     buscarIndicador,
     buscarIndicadoresPerfil,
+    atualizar,
+    buscarDadosAtulizados,
     testar
 }

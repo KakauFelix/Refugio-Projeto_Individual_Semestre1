@@ -148,6 +148,45 @@ function atualizar(req, res) {
 
 }
 
+function listarFilmesCurtidosUsuario(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    filmeSerieModel.listarFilmesCurtidosUsuario(idUsuario)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function buscarFilmeSerieCurtido(req, res) {
+    var idUsuario = req.params.idUsuario;
+    var filme_serie_buscado = req.params.filme_serie_buscado;
+
+    filmeSerieModel.buscarFilmeSerieCurtido(idUsuario, filme_serie_buscado)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     cadastrar,
     listar,
@@ -157,5 +196,7 @@ module.exports = {
     buscarFilmeSerie, 
     deletar,
     atualizar,
+    listarFilmesCurtidosUsuario,
+    buscarFilmeSerieCurtido,
     testar
 }

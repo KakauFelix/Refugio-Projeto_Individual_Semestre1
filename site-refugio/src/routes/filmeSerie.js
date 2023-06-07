@@ -42,4 +42,12 @@ router.put("/atualizar/:idFilmeSerie", upload.single('imgCapa'), (req, res) => {
     filmeSerieController.atualizar(req, res);
 });
 
+router.get("/listarFilmesCurtidosUsuario/:idUsuario", function (req, res) {
+    filmeSerieController.listarFilmesCurtidosUsuario(req, res);
+});
+
+router.get("/buscarFilmeSerieCurtido/:idUsuario/:filme_serie_buscado", function (req, res) {
+    filmeSerieController.buscarFilmeSerieCurtido(req, res);
+});
+
 module.exports = router;

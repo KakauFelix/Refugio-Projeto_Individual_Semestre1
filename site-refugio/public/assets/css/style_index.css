@@ -52,6 +52,7 @@ header{
     align-items: center;
     position: fixed;
     box-shadow: 2px 0px 5px #ffffff;
+    z-index: 1;
 }
 
 nav{
@@ -206,6 +207,8 @@ p{
 
 .cardsValores .card:hover{
     box-shadow: 4px 6px 8px #898989;
+    transform: translateY(-5px);
+    transition-delay: 50ms;
 }
 
 #curiosidades .boxCuriosidades div{
@@ -336,7 +339,12 @@ footer{
 }
 
 #desenvolvedor .conteiner_sobre_mim .imgsSobreMin .redes_sociais img{
+    width: 35px;
     margin: 5px;
+}
+
+#desenvolvedor .conteiner_sobre_mim .imgsSobreMin .redes_sociais img:hover{
+    transform: translateY(-3px);
 }
 
 #desenvolvedor .conteiner_sobre_mim .imgsSobreMin .redes_sociais .icon_linkedin:hover{

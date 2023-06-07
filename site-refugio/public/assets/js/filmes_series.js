@@ -575,7 +575,7 @@ function abrirModalEditarFilme(idFilmeSerie) {
                                 <label>Diretor Principal:</label>
                                 <select id="select_diretor_filme"></select>
                                 <label>Sinopse:</label>
-                                <textarea id="ipt_sinopse" cols="30" rows="5" maxlength="500">${filmeSerie.sinopse}</textarea>
+                                <textarea id="ipt_sinopse" cols="30" rows="5" maxlength="700">${filmeSerie.sinopse}</textarea>
                             </form>
                             <button class="btnAtualizar" onclick="atualizarFilmeSerie(${filmeSerie.idFilmeSerie})">Atualizar filme/serie</button>
                         </div>

@@ -1,5 +1,9 @@
-var objDiv = document.getElementById("div_msgs");
-objDiv.scrollTop = objDiv.scrollHeight;
+// var objDiv = document.getElementById("div_msgs");
+// objDiv.scrollTop = objDiv.scrollHeight;
+
+var pagina = "forum";
+
+console.log(pagina);
 
 fetch("/postagemForum/listar").then(function (resposta) {
     if (resposta.ok) {
@@ -24,7 +28,7 @@ fetch("/postagemForum/listar").then(function (resposta) {
 
                 div_msgs.innerHTML += `
                     <div class="cardMsg">
-                        <img class="img_usuario_msg" src="../assets/images/area-restrita/usuarios/img_usuario_padrao.png" alt="imagem do usuário">
+                        <img class="img_usuario_msg" src="../assets/images/area-restrita/usuarios/${postagem.imgUsuario}" alt="imagem do usuário">
                         <div class="box_msg">
                             <div class="infos_msg">
                                 <span>${postagem.username}</span>
@@ -106,7 +110,7 @@ function fazerPostagem() {
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+            // finalizarAguardar();
         });
 
         return false;
@@ -143,7 +147,7 @@ function buscarPelaData() {
     
                     div_msgs.innerHTML += `
                         <div class="cardMsg">
-                            <img class="img_usuario_msg" src="../assets/images/area-restrita/usuarios/img_usuario_padrao.png" alt="imagem do usuário">
+                            <img class="img_usuario_msg" src="../assets/images/area-restrita/usuarios/${postagem.imgUsuario}" alt="imagem do usuário">
                             <div class="box_msg">
                                 <div class="infos_msg">
                                     <span>${postagem.username}</span>
@@ -197,7 +201,7 @@ function buscarPeloUsuario() {
     
                     div_msgs.innerHTML += `
                         <div class="cardMsg">
-                            <img class="img_usuario_msg" src="../assets/images/area-restrita/usuarios/img_usuario_padrao.png" alt="imagem do usuário">
+                            <img class="img_usuario_msg" src="../assets/images/area-restrita/usuarios/${postagem.imgUsuario}" alt="imagem do usuário">
                             <div class="box_msg">
                                 <div class="infos_msg">
                                     <span>${postagem.username}</span>

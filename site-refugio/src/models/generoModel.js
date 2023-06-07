@@ -48,6 +48,7 @@ function listarRanking() {
         FROM genero
         LEFT JOIN filmesSeries ON filmesSeries.fkGenero = genero.idGenero
         LEFT JOIN curtidas ON curtidas.fkFilmeSerie = filmesSeries.idFilmeSerie
+        WHERE curtidas.statusCurtida = 1
         GROUP BY genero.genero
         ORDER BY qtdCurtidas DESC
         LIMIT 3;
@@ -64,6 +65,7 @@ function obterDadosGrafico() {
         FROM genero
         LEFT JOIN filmesSeries ON filmesSeries.fkGenero = genero.idGenero
         LEFT JOIN curtidas ON curtidas.fkFilmeSerie = filmesSeries.idFilmeSerie
+        WHERE curtidas.statusCurtida = 1
         GROUP BY genero.genero;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);

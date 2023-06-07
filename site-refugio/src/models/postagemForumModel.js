@@ -26,12 +26,13 @@ function listar() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
         SELECT postagemForum.idPostagemForum, 
+            usuario.imgUsuario,
             usuario.username,
             DATE_FORMAT(dataHora, "%d/%m/%Y - %H:%i:%S") as dataHora,
             postagemForum.mensagem
         FROM postagemForum
         JOIN usuario ON postagemForum.fkUsuario = usuario.idUsuario
-        ORDER BY dataHora;
+        ORDER BY dataHora DESC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -41,13 +42,14 @@ function buscarPorData(data_buscada) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
         SELECT postagemForum.idPostagemForum, 
+            usuario.imgUsuario,
             usuario.username,
             DATE_FORMAT(dataHora, "%d/%m/%Y - %H:%i:%S") as dataHora,
             postagemForum.mensagem
         FROM postagemForum
         JOIN usuario ON postagemForum.fkUsuario = usuario.idUsuario
         WHERE postagemForum.dataHora LIKE '${data_buscada}%'
-        ORDER BY dataHora;
+        ORDER BY dataHora DESC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -56,14 +58,15 @@ function buscarPorData(data_buscada) {
 function buscarPorUsuario(usuario_buscado) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-        SELECT postagemForum.idPostagemForum, 
+        SELECT postagemForum.idPostagemForum,
+            usuario.imgUsuario, 
             usuario.username,
             DATE_FORMAT(dataHora, "%d/%m/%Y - %H:%i:%S") as dataHora,
             postagemForum.mensagem
         FROM postagemForum
         JOIN usuario ON postagemForum.fkUsuario = usuario.idUsuario
-        WHERE usuario.username = '${usuario_buscado}'
-        ORDER BY dataHora;
+        WHERE usuario.username LIKE '${usuario_buscado}%'
+        ORDER BY dataHora DESC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

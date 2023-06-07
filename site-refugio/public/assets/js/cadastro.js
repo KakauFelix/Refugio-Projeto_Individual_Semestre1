@@ -1,5 +1,4 @@
 function cadastrar() {
-    // aguardar();
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
@@ -8,7 +7,6 @@ function cadastrar() {
     var usernameVar = ipt_username.value;
     var senhaVar = ipt_senha.value;
     var confirmacaoSenhaVar = ipt_confirmar_senha.value;
-
 
     if (nomeVar == "" || emailVar == "" || usernameVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
         Swal.fire({
@@ -29,6 +27,7 @@ function cadastrar() {
         });
 
         return false;
+        
     } else if(senhaVar != confirmacaoSenhaVar){
         Swal.fire({
             position: 'center',

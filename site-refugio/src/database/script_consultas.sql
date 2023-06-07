@@ -1,4 +1,3 @@
--- drop database refugio;
 use refugio;
 
 select * from usuario;
@@ -15,6 +14,7 @@ SELECT genero.genero,
 FROM genero
 LEFT JOIN filmesSeries ON filmesSeries.fkGenero = genero.idGenero
 LEFT JOIN curtidas ON curtidas.fkFilmeSerie = filmesSeries.idFilmeSerie
+WHERE curtidas.statusCurtida = 1
 GROUP BY genero.genero;
     
 -- Consultando quantas postagens existem no banco 
@@ -39,6 +39,7 @@ SELECT filmesSeries.titulo,
 	COUNT(idCurtida) AS qtdCurtidas
 FROM filmesSeries
 LEFT JOIN curtidas ON curtidas.fkFilmeSerie = filmesSeries.idFilmeSerie
+WHERE curtidas.statusCurtida = 1
 GROUP BY filmesSeries.titulo
 ORDER BY qtdCurtidas DESC
 LIMIT 5;
@@ -49,6 +50,7 @@ SELECT genero.genero,
 FROM genero
 LEFT JOIN filmesSeries ON filmesSeries.fkGenero = genero.idGenero
 LEFT JOIN curtidas ON curtidas.fkFilmeSerie = filmesSeries.idFilmeSerie
+WHERE curtidas.statusCurtida = 1
 GROUP BY genero.genero
 ORDER BY qtdCurtidas DESC
 LIMIT 3;
@@ -114,10 +116,18 @@ SELECT filmesSeries.* FROM filmesSeries
 JOIN curtidas ON curtidas.fkFilmeSerie = filmesSeries.idFilmeSerie
 WHERE curtidas.fkUsuario = 2 AND curtidas.statusCurtida = 1;
 
-
--- Atualizações
-UPDATE curtidas SET statusCurtida = 0
-        WHERE fkFilmeSerie = 1 AND fkUsuario = 2;   
-
--- 
-truncate table curtidas;
+SELECT fs.idFilmeSerie, 
+	fs.titulo, 
+	fs.imgCapa, 
+	IFNULL(c.quantidadeCurtidas, 0) AS qtdCurtidas,
+	IFNULL(c.statusCurtida, 0) AS statusCurtida
+FROM filmesSeries fs
+LEFT JOIN 
+	(SELECT fkFilmeSerie, 
+		COUNT(*) AS quantidadeCurtidas,
+		MAX(CASE WHEN fkUsuario = 2 THEN statusCurtida ELSE 0 END) AS statusCurtida
+	FROM curtidas WHERE curtidas.statusCurtida = 1
+	GROUP BY fkFilmeSerie) c ON fs.idFilmeSerie = c.fkFilmeSerie
+JOIN curtidas ON curtidas.fkFilmeSerie = fs.idFilmeSerie
+WHERE curtidas.fkUsuario = 2 AND curtidas.statusCurtida = 1
+ORDER BY fs.titulo;

@@ -52,6 +52,7 @@ function listarRanking() {
             COUNT(idCurtida) AS qtdCurtidas
         FROM filmesSeries
         LEFT JOIN curtidas ON curtidas.fkFilmeSerie = filmesSeries.idFilmeSerie
+        WHERE curtidas.statusCurtida = 1
         GROUP BY filmesSeries.titulo
         ORDER BY qtdCurtidas DESC
         LIMIT 5;
@@ -125,12 +126,6 @@ function deletar(idFilmeSerie) {
 
 function atualizar(filmeSerie) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", filmeSerie);
-    
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
-    // var instrucao = `
-    //     INSERT INTO filmesSeries (titulo, anoLancamento, sinopse, fkCategoria, fkGenero, fkRoteiristaPrincipal, fkDiretorPrincipal, imgCapa) VALUES ('${filmeSerie.titulo}', ${filmeSerie.anoLancamento}, '${filmeSerie.sinopse}', ${filmeSerie.categoria}, ${filmeSerie.genero}, ${filmeSerie.roteirista}, ${filmeSerie.diretor}, '${filmeSerie.imgCapa}');
-    // `;
 
     var instrucao = `
         UPDATE filmesSeries SET titulo = '${filmeSerie.titulo}', anoLancamento = ${filmeSerie.anoLancamento}, sinopse = '${filmeSerie.sinopse}', fkCategoria = ${filmeSerie.categoria}, fkGenero = ${filmeSerie.genero}, fkRoteiristaPrincipal = ${filmeSerie.roteirista}, fkDiretorPrincipal = ${filmeSerie.diretor}, imgCapa = '${filmeSerie.imgCapa}' WHERE idFilmeSerie = ${filmeSerie.idFilmeSerie}
@@ -140,6 +135,56 @@ function atualizar(filmeSerie) {
     return database.executar(instrucao);
 }
 
+function listarFilmesCurtidosUsuario(idUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+
+    var instrucao = `
+        SELECT fs.idFilmeSerie, 
+            fs.titulo, 
+            fs.imgCapa, 
+            IFNULL(c.quantidadeCurtidas, 0) AS qtdCurtidas,
+            IFNULL(c.statusCurtida, 0) AS statusCurtida
+        FROM filmesSeries fs
+        LEFT JOIN 
+            (SELECT fkFilmeSerie, 
+                COUNT(*) AS quantidadeCurtidas,
+                MAX(CASE WHEN fkUsuario = ${idUsuario} THEN statusCurtida ELSE 0 END) AS statusCurtida
+            FROM curtidas WHERE curtidas.statusCurtida = 1
+            GROUP BY fkFilmeSerie) c ON fs.idFilmeSerie = c.fkFilmeSerie
+        JOIN curtidas ON curtidas.fkFilmeSerie = fs.idFilmeSerie
+        WHERE curtidas.fkUsuario = ${idUsuario} AND curtidas.statusCurtida = 1
+        ORDER BY fs.titulo;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function buscarFilmeSerieCurtido(idUsuario, filme_serie_buscado) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+
+    var instrucao = `
+        SELECT fs.idFilmeSerie, 
+            fs.titulo, 
+            fs.imgCapa, 
+            IFNULL(c.quantidadeCurtidas, 0) AS qtdCurtidas,
+            IFNULL(c.statusCurtida, 0) AS statusCurtida
+        FROM filmesSeries fs
+        LEFT JOIN 
+            (SELECT fkFilmeSerie, 
+                COUNT(*) AS quantidadeCurtidas,
+                MAX(CASE WHEN fkUsuario = ${idUsuario} THEN statusCurtida ELSE 0 END) AS statusCurtida
+            FROM curtidas WHERE curtidas.statusCurtida = 1
+            GROUP BY fkFilmeSerie) c ON fs.idFilmeSerie = c.fkFilmeSerie
+        JOIN curtidas ON curtidas.fkFilmeSerie = fs.idFilmeSerie
+        WHERE curtidas.fkUsuario = ${idUsuario} AND curtidas.statusCurtida = 1 
+        AND fs.titulo LIKE '%${filme_serie_buscado}%'
+        ORDER BY fs.titulo;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+
 module.exports = {
     cadastrar,
     listar,
@@ -148,5 +193,7 @@ module.exports = {
     buscarInformacoes,
     buscarFilmeSerie,
     deletar,
-    atualizar
+    atualizar,
+    listarFilmesCurtidosUsuario,
+    buscarFilmeSerieCurtido
 };

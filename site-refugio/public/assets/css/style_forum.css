@@ -28,6 +28,8 @@
     width: 74%;
     height: 100%;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .div_filtros{
@@ -136,5 +138,99 @@
     border-radius: 5px;
     font-size: 15px;
     padding-left: 10px;
+}
+
+
+.div_modal_editar_perfil{
+    width: 100%;
+    height: 100vh;
+    display: none;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background: #000000AA;
+    overflow: hidden;
+}
+
+.box_modal_editar_perfil{
+    position: fixed;
+    width: 35%;
+    height: fit-content;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3vh;
+    margin: auto;
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px #898989;
+    padding: 20px 30px 30px 30px;
+    color: #000000;
+    text-align: center;
+}
+
+.modal_close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.div_update_perfil{
+    width: 100%;
+}
+
+.forms_update_perfil{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.box_modal_editar_perfil .img_usuario{
+    width: 150px;
+    height: 150px;
+    border: 3px solid;
+    border-radius: 100px;
+    align-self: center;
+    margin: 15px;
+}
+
+form input{
+    height: 25px;
+    padding-left: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.btnAtualizar{
+    width: 100%;
+    height: 30px;
+    background-color: #1097A2;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    margin-top: 25px;
+}
+
+.btnAtualizar:hover{
+    background-color: #0f8994;
+}
+
+.forms_update_perfil .campo_imgUsuario{
+    text-align: center;
+}
+
+.box_modal_editar_perfil h2{
+    /* width: 100%; */
+    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: auto;
 }
 

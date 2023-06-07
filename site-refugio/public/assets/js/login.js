@@ -36,11 +36,22 @@ function entrar() {
                 console.log(json);
                 console.log(JSON.stringify(json));
 
+                sessionStorage.SENHA_USUARIO = json.senha;
+                sessionStorage.IMG_USUARIO = json.imgUsuario;
                 sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.USERNAME_USUARIO = json.username;
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.TIPO_USUARIO = json.tpUsuario;
                 sessionStorage.ID_USUARIO = json.idUsuario;
+
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Login realizado com sucesso!',
+                    text: 'Redirecionando para página de entrada...',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
 
                 if (sessionStorage.TIPO_USUARIO == 0) {
                     setTimeout(function () {
